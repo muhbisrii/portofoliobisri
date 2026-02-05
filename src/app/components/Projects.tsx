@@ -82,14 +82,14 @@ export function Projects() {
         </div>
 
         {/* Tabs */}
-        <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-2 mb-12 overflow-x-auto">
-          <div className="flex items-center gap-2 md:gap-4 min-w-max">
+        <div className="bg-zinc-900/30 border border-zinc-800 rounded-2xl p-2 mb-12">
+          <div className="flex items-center gap-4">
             <button
               onClick={() => setActive("projects")}
-              className={`px-6 py-3 rounded-2xl transition-all font-[Montserrat] font-semibold text-sm ${
+              className={`px-6 py-3 rounded-2xl transition-colors font-[Montserrat] font-semibold text-sm ${
                 active === "projects"
                   ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white shadow-lg"
-                  : "text-gray-300 hover:text-white"
+                  : "text-gray-300"
               }`}
             >
               Projects
@@ -97,10 +97,10 @@ export function Projects() {
 
             <button
               onClick={() => setActive("certs")}
-              className={`px-6 py-3 rounded-2xl transition-all font-[Montserrat] font-semibold text-sm ${
+              className={`px-6 py-3 rounded-2xl transition-colors font-[Montserrat] font-semibold text-sm ${
                 active === "certs"
                   ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white shadow-lg"
-                  : "text-gray-300 hover:text-white"
+                  : "text-gray-300"
               }`}
             >
               Certificates
@@ -108,10 +108,10 @@ export function Projects() {
 
             <button
               onClick={() => setActive("stack")}
-              className={`md:ml-auto px-6 py-3 rounded-2xl transition-all font-[Montserrat] font-semibold text-sm ${
+              className={`ml-auto px-6 py-3 rounded-2xl transition-colors font-[Montserrat] font-semibold text-sm ${
                 active === "stack"
                   ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white shadow-lg"
-                  : "text-gray-300 hover:text-white"
+                  : "text-gray-300"
               }`}
             >
               Tech Stack
@@ -119,94 +119,98 @@ export function Projects() {
           </div>
         </div>
 
-        {/* Content Section */}
-        <div className="min-h-[400px]">
-          {active === "projects" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="group overflow-hidden rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-500/50 transition-all"
-                >
-                  <div className="w-full aspect-video flex items-center justify-center bg-black/40 p-4">
-                    <img src={project.image} alt={project.title} className="max-w-full max-h-full object-contain rounded-lg shadow-xl group-hover:scale-105 transition-transform duration-500" />
-                  </div>
+        {/* Content */}
+        {active === "projects" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, scale: 0.98 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                className="group overflow-hidden rounded-2xl bg-zinc-900/30 border border-zinc-800"
+              >
+                <div className="w-full aspect-[4/3] flex items-center justify-center bg-black/10 p-4">
+                  <img src={project.image} alt={project.title} className="max-w-full max-h-full object-contain rounded-lg shadow" />
+                </div>
 
-                  <div className="p-6">
-                    <span className="text-purple-400 font-[Montserrat] text-sm font-bold uppercase tracking-wide mb-2 block">{project.category}</span>
-                    <h3 className="text-lg font-[Montserrat] font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+                <div className="p-6">
+                  <span className="text-purple-400 font-[Montserrat] text-sm font-bold uppercase tracking-wide mb-2 block">{project.category}</span>
+                  <h3 className="text-lg font-[Montserrat] font-bold text-white mb-2">{project.title}</h3>
+                  <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
 
-                    <div className="flex items-center gap-3">
-                      <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                        Live Demo <ExternalLink size={14} />
-                      </a>
-                      <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-800 rounded-full text-gray-300 hover:text-white text-sm inline-flex items-center gap-2">
-                        <Github size={14} /> Repo
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                  <div className="flex items-center gap-3">
+                    <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm inline-flex items-center gap-2">
+                      Live Demo <ExternalLink size={14} />
+                    </a>
 
-          {active === "certs" && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {certificates.map((cert) => (
-                <motion.div
-                  key={cert.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-4 flex flex-col gap-4 group"
-                >
-                  <div className="relative overflow-hidden rounded-lg bg-black aspect-[1.414/1] flex items-center justify-center p-2">
-                    <img src={cert.image} alt={cert.title} className="max-w-full max-h-full object-contain group-hover:scale-110 transition-transform duration-700" />
-                    <a href={cert.image} target="_blank" rel="noreferrer" className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity">
-                       <ExternalLink className="text-white" />
+                    {/* Tombol Details dikembalikan */}
+                    <a href={`#project-${project.id}`} className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full text-sm inline-flex items-center gap-2">
+                      Details
+                    </a>
+
+                    <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-800 rounded-full text-gray-300 hover:text-white text-sm inline-flex items-center gap-2">
+                      <Github size={14} /> Repo
                     </a>
                   </div>
-                  <div className="text-center">
-                    <h4 className="text-white font-bold font-[Montserrat]">{cert.title}</h4>
-                    <p className="text-gray-400 text-sm mt-1">{cert.issuer} • {cert.year}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
-          {active === "stack" && (
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
-              {stack.map((item, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-purple-500/50 transition-all group"
-                >
-                  <div className="w-16 h-16 rounded-xl bg-zinc-950 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="w-10 h-10 object-contain"
-                      onError={(e) => {
-                        const el = e.target as HTMLImageElement;
-                        el.src = `https://ui-avatars.com/api/?name=${item.name}&background=333&color=fff`;
-                      }}
-                    />
-                  </div>
-                  <span className="text-xs md:text-sm text-gray-400 font-[Montserrat] group-hover:text-white transition-colors">{item.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          )}
-        </div>
+        {active === "certs" && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {certificates.map((cert) => (
+              <motion.div
+                key={cert.id}
+                initial={{ opacity: 0, y: 8 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45 }}
+                className="bg-zinc-900/40 border border-zinc-800 rounded-2xl p-4 flex flex-col gap-3 items-center"
+              >
+                <div className="w-full rounded-lg bg-black/10 flex items-center justify-center p-4">
+                  <a href={cert.image} target="_blank" rel="noreferrer" className="w-full flex items-center justify-center">
+                    <img src={cert.image} alt={cert.title} className="max-w-full max-h-[420px] object-contain" />
+                  </a>
+                </div>
+                <h4 className="text-lg font-[Montserrat] font-bold text-white text-center">{cert.title}</h4>
+                <p className="text-gray-400 text-center">{cert.issuer} • {cert.year}</p>
+              </motion.div>
+            ))}
+          </div>
+        )}
+
+        {active === "stack" && (
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+            {stack.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05 }}
+                className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-md group"
+                title={item.name}
+              >
+                <div className="w-16 h-16 rounded-lg bg-zinc-900 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="w-11 h-11 object-contain transition-transform group-hover:scale-110"
+                    onError={(e) => {
+                      const el = e.target as HTMLImageElement;
+                      el.src = `https://ui-avatars.com/api/?name=${item.name}&background=333&color=fff`;
+                    }}
+                  />
+                </div>
+                <div className="text-sm text-gray-300 font-[Montserrat] text-center">{item.name}</div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
