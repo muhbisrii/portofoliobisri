@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import Groq from "groq-sdk";
 
-// Konfigurasi Groq API
+// Konfigurasi Groq API dengan prefix VITE_ untuk akses Client-side
 const groq = new Groq({
   apiKey: import.meta.env.VITE_GROQ_API_KEY,
   dangerouslyAllowBrowser: true 
@@ -52,7 +52,7 @@ export function Chatbot() {
             - Ramah, profesional, dan to-the-point khas mahasiswa IT.
             - Jika ditanya hal di luar portofolio, arahkan kembali dengan sopan.`
           },
-          // Menggunakan 'as any' untuk menghilangkan merah di TypeScript
+          // Spread messages yang ada
           ...(newMessages as any),
         ],
         model: "llama-3.3-70b-versatile",
@@ -63,7 +63,7 @@ export function Chatbot() {
         content: chatCompletion.choices[0]?.message?.content || "Maaf, saya sedang offline." 
       }]);
     } catch (error) {
-      console.error(error);
+      console.error("Chat Error:", error);
     } finally {
       setIsLoading(false);
     }
@@ -82,7 +82,6 @@ export function Chatbot() {
             {/* Header */}
             <div className="p-4 bg-gradient-to-r from-purple-600 to-indigo-600 flex justify-between items-center">
               <div className="flex items-center gap-3">
-                {/* Animasi Melambai pada Logo Bot */}
                 <motion.div 
                   animate={{ rotate: [0, 15, -15, 15, 0] }}
                   transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
