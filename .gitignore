@@ -1,0 +1,44 @@
+node_modules/
+dist/
+.vite/
+.env
+.env.local
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+coverage/
+.idea/
+.vscode/
+/.pnp
+.pnp.js
+
+# Optional
+/public/build
+
+# Mac
+*.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Build
+build/
+
+# TypeScript
+*.tsbuildinfo
+
+# Misc
+.sass-cache
+.cache
+
+# Tailwind
+tailwind.css
+
+# local env files
+.env*
