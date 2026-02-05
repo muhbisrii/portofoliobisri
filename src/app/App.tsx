@@ -6,6 +6,7 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import MusicPlayer from "./components/MusicPlayer";
 import ProjectDetail from "./components/ProjectDetail";
+import { Chatbot } from "./components/Chatbot"; // Import di atas
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
       <About />
       <Projects />
       <Contact />
+      <Chatbot />
       <Footer />
       <MusicPlayer />
       <ProjectDetail />
