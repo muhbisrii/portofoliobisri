@@ -1,7 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-// Use a public path for the image to avoid module resolution/type issues
-const heroPhoto = "/assets/homebisri.jpeg";
+import heroPhoto from "../../assets/homebisri.jpeg";
 import Typewriter from "./Typewriter";
 
 export function Hero() {
