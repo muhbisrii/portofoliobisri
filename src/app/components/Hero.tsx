@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import heroPhoto from "../../assets/homebisri.jpeg";
+import heroPhoto from "../../assets/berandabisri.jpg";
 import Typewriter from "./Typewriter";
 
 export function Hero() {
