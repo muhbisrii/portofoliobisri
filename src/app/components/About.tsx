@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Code2, Smartphone, Figma, Scissors } from "lucide-react";
-import aboutPhoto from "../../assets/aboutbisri.png";
+import aboutPhoto from "../../assets/aboutbisri.jpg";
 
 export function About() {
   const education = [
