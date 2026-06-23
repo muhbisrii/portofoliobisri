@@ -1,23 +1,28 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import heroPhoto from "../../assets/homebisri.jpeg";
+// Use a public path for the image to avoid module resolution/type issues
+const heroPhoto = "/assets/homebisri.jpeg";
 import Typewriter from "./Typewriter";
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center justify-center pt-24 md:pt-20 pb-12 overflow-hidden bg-black"
     >
       {/* Background Gradient Blob (floating) */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-gradient-to-br from-purple-700 to-indigo-700 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-floating" />
       <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gradient-to-br from-indigo-800 to-purple-800 rounded-full mix-blend-screen filter blur-[128px] opacity-40 animate-floating-slow" />
 
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      {/* Container utama dengan grid */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative z-10">
+        
+        {/* Kolom Teks */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
+          className="text-center md:text-left flex flex-col items-center md:items-start"
         >
           <span className="text-purple-400 font-[Montserrat] font-bold tracking-wider uppercase mb-4 block text-sm md:text-base">
             Hello, I'm Muhammad Bisri
@@ -36,7 +41,7 @@ export function Hero() {
             Merging strong design foundations with modern engineering. A final-year Informatics student based in <strong>Banjarmasin, Kalimantan Selatan</strong>.
           </p>
           
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <a
               href="#projects"
               className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2 shadow-lg shadow-purple-900/50"
@@ -52,18 +57,21 @@ export function Hero() {
           </div>
         </motion.div>
 
+        {/* Kolom Foto (Hidden dihilangkan, ditambahkan ukuran responsif) */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative hidden md:block"
+          className="relative w-full order-first md:order-last mb-4 md:mb-0"
         >
-          <div className="relative w-full aspect-square max-w-md mx-auto animate-floating-slower hover:-translate-y-1 hover:scale-[1.02] transition-transform duration-700">
+          {/* Max-width disesuaikan: 260px di mobile agar tidak kebesaran, kembali ke max-w-md di layar besar */}
+          <div className="relative w-full aspect-square max-w-[260px] md:max-w-md mx-auto animate-floating-slower hover:-translate-y-1 hover:scale-[1.02] transition-transform duration-700">
              {/* Decorative Ring */}
             <div className="absolute inset-0 border-2 border-purple-500/30 rounded-full animate-[spin_10s_linear_infinite]" />
             <div className="absolute inset-4 border-2 border-indigo-500/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
             
-            <div className="absolute inset-8 rounded-full overflow-hidden border-4 border-purple-900/50 shadow-2xl shadow-purple-900/30 bg-gray-900">
+            {/* Jarak border dalam disesuaikan untuk HP */}
+            <div className="absolute inset-6 md:inset-8 rounded-full overflow-hidden border-4 border-purple-900/50 shadow-2xl shadow-purple-900/30 bg-gray-900">
                <img
                 src={heroPhoto}
                 alt="Muhammad Bisri"
@@ -72,6 +80,7 @@ export function Hero() {
             </div>
           </div>
         </motion.div>
+        
       </div>
     </section>
   );
