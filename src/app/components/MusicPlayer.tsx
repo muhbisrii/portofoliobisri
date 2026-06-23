@@ -84,14 +84,18 @@ export function MusicPlayer() {
 
   return (
     <>
-      <div className="fixed left-4 bottom-4 z-50">
+      <div className="fixed right-6 bottom-20 z-50 md:left-4 md:bottom-4 md:right-auto">
         <button
           onClick={toggle}
           aria-pressed={!effectiveMuted}
           title={effectiveMuted ? "Enable music" : "Disable music"}
-          className="flex items-center justify-center w-12 h-12 rounded-full bg-purple-700/90 hover:bg-purple-600 transition-shadow shadow-lg text-white"
+          className="flex items-center justify-center w-14 h-14 md:w-12 md:h-12 rounded-full bg-purple-700/90 hover:bg-purple-600 transition-shadow shadow-lg text-white"
         >
-          {effectiveMuted ? <VolumeX size={20} /> : <Volume size={20} />}
+          {effectiveMuted ? (
+            <VolumeX className="w-7 h-7 md:w-5 md:h-5" />
+          ) : (
+            <Volume className="w-7 h-7 md:w-5 md:h-5" />
+          )}
         </button>
       </div>
 

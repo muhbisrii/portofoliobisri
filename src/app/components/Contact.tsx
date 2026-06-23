@@ -82,18 +82,33 @@ export function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-zinc-900/50 border border-zinc-800 p-8 rounded-2xl hover:bg-zinc-800/80 transition-all flex flex-col items-center group"
+              className="bg-zinc-900/50 border border-zinc-800 rounded-2xl hover:bg-zinc-800/80 transition-all group overflow-hidden"
             >
-              <div className={`p-4 rounded-full ${item.bg} ${item.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                {item.icon}
-              </div>
-              <h4 className="text-white font-[Montserrat] font-bold text-lg mb-2">{item.label}</h4>
               {item.href ? (
-                <a href={item.href} className="text-gray-400 hover:text-white transition-colors font-[Montserrat] text-sm">
-                  {item.value}
+                /* Jika memiliki link (Email & WA), bungkus dengan tag a dan buat agar bisa diklik se-kotak penuh */
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-8 flex flex-col items-center w-full h-full cursor-pointer"
+                >
+                  <div className={`p-4 rounded-full ${item.bg} ${item.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    {item.icon}
+                  </div>
+                  <h4 className="text-white font-[Montserrat] font-bold text-lg mb-2">{item.label}</h4>
+                  <span className="text-gray-400 group-hover:text-white transition-colors font-[Montserrat] text-sm">
+                    {item.value}
+                  </span>
                 </a>
               ) : (
-                <p className="text-gray-400 font-[Montserrat] text-sm">{item.value}</p>
+                /* Jika tidak memiliki link (Location), render sebagai div biasa */
+                <div className="p-8 flex flex-col items-center w-full h-full">
+                  <div className={`p-4 rounded-full ${item.bg} ${item.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                    {item.icon}
+                  </div>
+                  <h4 className="text-white font-[Montserrat] font-bold text-lg mb-2">{item.label}</h4>
+                  <p className="text-gray-400 font-[Montserrat] text-sm">{item.value}</p>
+                </div>
               )}
             </motion.div>
           ))}
@@ -112,6 +127,8 @@ export function Contact() {
               <a
                 key={index}
                 href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full text-gray-300 transition-all duration-300 group ${social.color} hover:bg-zinc-900`}
               >
                 {social.icon}
