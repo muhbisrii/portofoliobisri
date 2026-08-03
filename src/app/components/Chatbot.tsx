@@ -4,16 +4,19 @@ import { MessageCircle, X, Send, Bot } from "lucide-react";
 import Groq from "groq-sdk";
 
 // Konfigurasi Groq API dengan prefix VITE_ untuk akses Client-side
-const groq = new Groq({
-  apiKey: import.meta.env.VITE_GROQ_API_KEY,
-  dangerouslyAllowBrowser: true 
-});
+const groqApiKey = import.meta.env.VITE_GROQ_API_KEY;
+const groq = groqApiKey
+  ? new Groq({
+      apiKey: groqApiKey,
+      dangerouslyAllowBrowser: true,
+    })
+  : null;
 
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Halo! Saya AI Assistant Bisri. Ada yang bisa saya bantu?" }
+    { role: "assistant", content: "Halo! Saya AI Assistant Bisri. Saya siap membantu menjelaskan skill, pengalaman, dan fokus saya sebagai alumni IT." }
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -35,6 +38,18 @@ export function Chatbot() {
     setInput("");
     setIsLoading(true);
 
+    if (!groq) {
+      setMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: "Chatbot saat ini belum aktif karena API key belum dikonfigurasi.",
+        },
+      ]);
+      setIsLoading(false);
+      return;
+    }
+
     try {
       const chatCompletion = await groq.chat.completions.create({
         messages: [
@@ -44,12 +59,13 @@ export function Chatbot() {
             
             PROFIL BISRI:
             - Identitas: Lahir di Banjarmasin, 11 Februari 2004.
-            - Kesibukan: Mahasiswa Informatika yang aktif mengedit video dan eksplorasi teknologi frontend.
-            - Alasan masuk IT: Ketertarikan pada inovasi digital dan prospek karier yang luas.
-            - Visi Karier: Menjadi Software Engineer profesional.
+            - Latar Belakang: Alumni D3 Teknik Informatika Politeknik Negeri Banjarmasin.
+            - Fokus: Frontend Web & Mobile Development, UI/UX, dan desain visual yang kuat.
+            - Kegiatan: Aktif membangun tampilan aplikasi yang modern serta mengeksplorasi teknologi frontend.
+            - Visi Karier: Menjadi developer profesional yang handal di bidang software engineering.
             
             GAYA BICARA:
-            - Ramah, profesional, dan to-the-point khas mahasiswa IT.
+            - Ramah, profesional, dan to-the-point khas seorang developer IT.
             - Jika ditanya hal di luar portofolio, arahkan kembali dengan sopan.`
           },
           // Spread messages yang ada

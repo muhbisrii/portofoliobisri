@@ -47,15 +47,27 @@ export function About() {
           
           <div className="w-20 h-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-8" />
 
-          <p className="text-gray-300 text-lg font-[Montserrat] leading-relaxed mb-10">
-            Hi, I'm <strong className="text-white">Muhammad Bisri</strong>. I am currently a student at <strong className="text-purple-400">Politeknik Negeri Banjarmasin</strong> majoring in Informatics Engineering.
+          <p className="text-gray-300 text-lg font-[Montserrat] leading-relaxed mb-8">
+            Hi, I'm <strong className="text-white">Muhammad Bisri</strong>. I graduated from <strong className="text-purple-400">Politeknik Negeri Banjarmasin</strong> with a <strong className="text-white">D3 in Informatics Engineering</strong>, and my focus is on <strong className="text-white">Frontend Web & Mobile Development</strong>.
             <br /><br />
-            Although my focus is now on <strong className="text-white">Frontend Web & Mobile Development</strong>, I have a strong creative background. Thanks to my Multimedia major at <strong className="text-purple-400">SMKN 1 Banjarmasin</strong>, I am proficient in design tools like **CorelDraw** and **Photoshop**, allowing me to bridge the gap between code and aesthetics.
+            I combine strong technical skills with a creative background shaped by my Multimedia studies at <strong className="text-purple-400">SMKN 1 Banjarmasin</strong>, allowing me to build interfaces that are not only functional but also visually polished.
           </p>
+
+          <div className="grid sm:grid-cols-2 gap-4 mb-10">
+            <div className="rounded-2xl border border-purple-500/20 bg-zinc-900/70 p-4">
+              <p className="text-sm uppercase tracking-[0.2em] text-purple-400 mb-1">GPA</p>
+              <p className="text-2xl font-[Montserrat] font-bold text-white">3.67</p>
+            </div>
+            <div className="rounded-2xl border border-indigo-500/20 bg-zinc-900/70 p-4">
+              <p className="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-1">Internship</p>
+              <p className="text-lg font-[Montserrat] font-semibold text-white">10 months total</p>
+              <p className="text-sm text-gray-400">6 months during vocational school + 4 months during college</p>
+            </div>
+          </div>
 
           {/* Education Section */}
           <div className="mb-10">
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Education</h3>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Education & Background</h3>
             <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
               {education.map((edu, index) => (
                 <div key={index} className="relative">

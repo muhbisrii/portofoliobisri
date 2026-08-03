@@ -37,7 +37,7 @@ export function Hero() {
             />
           </h1>
           <p className="text-gray-400 text-base md:text-lg font-[Montserrat] mb-8 max-w-lg leading-relaxed">
-            Merging strong design foundations with modern engineering. A final-year Informatics student based in <strong>Banjarmasin, Kalimantan Selatan</strong>.
+            Merging strong design foundations with modern engineering. A graduate of Informatics Engineering focused on building polished web and mobile experiences from <strong>Banjarmasin, Kalimantan Selatan</strong>.
           </p>
           
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
