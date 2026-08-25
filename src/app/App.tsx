@@ -4,7 +4,6 @@ import { About } from "./components/About";
 import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import MusicPlayer from "./components/MusicPlayer";
 import ProjectDetail from "./components/ProjectDetail";
 import { Chatbot } from "./components/Chatbot"; // Import di atas
 
@@ -18,7 +17,6 @@ export default function App() {
       <Contact />
       <Chatbot />
       <Footer />
-      <MusicPlayer />
       <ProjectDetail />
     </div>
   );
