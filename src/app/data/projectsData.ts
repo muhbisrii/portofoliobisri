@@ -33,7 +33,7 @@ export const projects = [
   {
     id: 2,
     title: "Mobile Apps (Ringkas AI & Grow Track) - Wimedia",
-    category: "Utility & Healthcare / Mobile App",
+    category: "Mobile App",
     image: project2Img,
     description:
       "Mengerjakan proyek wrapping apps untuk klien Wimedia, mengonversi platform web menjadi aplikasi mobile Android. Dari 3 aplikasi yang dikembangkan, saat ini 2 aplikasi telah berhasil dirilis secara publik di Google Play Store (Ringkas AI dan Grow Track).",
