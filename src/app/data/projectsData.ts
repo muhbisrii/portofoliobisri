@@ -13,7 +13,7 @@ export const projects = [
     image: project1Img,
     description:
       "Website pengaduan masyarakat untuk Dinas Pemberdayaan Perempuan dan Perlindungan Anak Kota Banjarmasin. Situs ini dibuat saat magang di DP3A sebagai tugas magang — menyediakan fitur pengajuan laporan, manajemen kasus, dan dashboard admin.",
-    live: "https://web-dp3a-bjm.vercel.app/",
+    live: "https://sipena-dp3a.vercel.app",
     repo: "https://github.com/muhbisrii/web_dp3a_bjm",
     gallery: [magang1, magang2, magang3, magang4],
     // Detail khusus Project 1 (tetap utuh)
@@ -37,9 +37,6 @@ export const projects = [
     image: project2Img,
     description:
       "Mengerjakan proyek wrapping apps untuk klien Wimedia, mengonversi platform web menjadi aplikasi mobile Android. Dari 3 aplikasi yang dikembangkan, saat ini 2 aplikasi telah berhasil dirilis secara publik di Google Play Store (Ringkas AI dan Grow Track).",
-    live: "", // Isi dengan link Play Store jika ada
-    repo: "", 
-    gallery: [], 
     // Detail khusus Project 2 (fokus wrapping, admob, & play store)
     sections: [
       {
