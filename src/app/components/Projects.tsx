@@ -130,42 +130,62 @@ export function Projects() {
               {filteredProjects.length === 0 ? (
                 <div className="col-span-full text-center text-gray-400">Tidak ada proyek untuk filter ini.</div>
               ) : (
-                filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, scale: 0.98 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45 }}
-                className="group overflow-hidden rounded-2xl bg-zinc-900/30 border border-zinc-800"
-              >
-                <div className="w-full aspect-[4/3] flex items-center justify-center bg-black/10 p-4">
-                  <img src={project.image} alt={project.title} className="max-w-full max-h-full object-contain rounded-lg shadow" />
-                </div>
+                filteredProjects.map((project) => {
+                  const cat = (project.category || "").toLowerCase();
+                  const isWebMobile = cat.includes("web") || cat.includes("mobile");
+                  const isCombinedContent = project.title === "Digital Content Creator (Esports & Wedding)";
+                  return (
+                    <motion.div
+                      key={project.id}
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.45 }}
+                      className="group overflow-hidden rounded-2xl bg-zinc-900/30 border border-zinc-800"
+                    >
+                      <div className="w-full aspect-[4/3] flex items-center justify-center bg-black/10 p-4">
+                        <img src={project.image} alt={project.title} className="max-w-full max-h-full object-contain rounded-lg shadow" />
+                      </div>
 
-                <div className="p-6">
-                  <span className="text-purple-400 font-[Montserrat] text-sm font-bold uppercase tracking-wide mb-2 block">{project.category}</span>
-                  <h3 className="text-lg font-[Montserrat] font-bold text-white mb-2">{project.title}</h3>
-                  <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+                      <div className="p-6">
+                        <span className="text-purple-400 font-[Montserrat] text-sm font-bold uppercase tracking-wide mb-2 block">{project.category}</span>
+                        <h3 className="text-lg font-[Montserrat] font-bold text-white mb-2">{project.title}</h3>
+                        <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
 
-                  <div className="flex items-center gap-3">
-                    <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                      Demo <ExternalLink size={14} />
-                    </a>
+                        <div className="flex items-center gap-3">
+                          {isWebMobile && (
+                            <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm inline-flex items-center gap-2">
+                              Demo <ExternalLink size={14} />
+                            </a>
+                          )}
 
-                    {/* Tombol Details dikembalikan */}
-                    <a href={`#project-${project.id}`} className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                      Detail
-                    </a>
+                          {/* Tombol Details dikembalikan */}
+                          <a href={`#project-${project.id}`} className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full text-sm inline-flex items-center gap-2">
+                            Detail
+                          </a>
 
-                    <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-800 rounded-full text-gray-300 hover:text-white text-sm inline-flex items-center gap-2">
-                      <Github size={14} /> Repositori
-                    </a>
-                  </div>
-                </div>
-              </motion.div>
-              ))
-            )}
+                          {isWebMobile && (
+                            <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-800 rounded-full text-gray-300 hover:text-white text-sm inline-flex items-center gap-2">
+                              <Github size={14} /> Repositori
+                            </a>
+                          )}
+
+                          {isCombinedContent && (
+                            <>
+                              <a href="https://www.tiktok.com/@itsjexxaa" target="_blank" rel="noreferrer" className="px-3 py-2 bg-pink-600 hover:bg-pink-700 text-white rounded-full text-sm inline-flex items-center gap-2">
+                                TikTok <ExternalLink size={14} />
+                              </a>
+                              <a href="https://www.instagram.com/vowture?igsi=cHEwY2ZwMmhmcDN5" target="_blank" rel="noreferrer" className="px-3 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-full text-sm inline-flex items-center gap-2">
+                                Instagram <ExternalLink size={14} />
+                              </a>
+                            </>
+                          )}
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })
+              )}
           </div>
         )}
 

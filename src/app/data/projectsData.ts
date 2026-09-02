@@ -4,6 +4,14 @@ import magang1 from "../../assets/magang1.jpg";
 import magang2 from "../../assets/magang2.jpeg";
 import magang3 from "../../assets/magang3.jpg";
 import magang4 from "../../assets/magang4.jpg";
+import itsjexxa from "../../assets/banner2.jpg";
+import banner3 from "../../assets/banner3.png";
+import posterSimpadu from "../../assets/poster simpadu.png";
+import logoVowture from "../../assets/logo vowture.png";
+import posterWeb from "../../assets/poster web.png";
+import logoWedding from "../../assets/logo wedding.png";
+import desainRoti from "../../assets/desain roti.png";
+import desainSempro from "../../assets/desain sempro.png";
 
 export const projects = [
   {
@@ -50,6 +58,28 @@ export const projects = [
           "Selain melakukan wrapping, saya juga bertanggung jawab mengintegrasikan SDK Google AdMob ke dalam setiap aplikasi untuk keperluan monetisasi. Setelah proses build dan pengujian selesai, saya menangani tahap deployment hingga aplikasi berhasil diunggah, melewati proses review, dan dirilis di Google Play Store (total 2 dari 3 aplikasi yang direncanakan telah tayang).",
       },
     ],
+  },
+  {
+    id: 4,
+    title: "Digital Content Creator (Esports & Wedding)",
+    category: "Video Editing",
+    image: itsjexxa,
+    description:
+      "Mengelola dua portofolio media digital: akun TikTok esports (@itsjexxaa) dengan 122.000+ pengikut dan 19,9 juta likes, serta layanan dokumentasi pernikahan (@vowture). Proyek ini membuktikan fleksibilitas dan keahlian mumpuni dalam video editing menggunakan CapCut, mulai dari konten dinamis bertempo cepat dengan retensi tinggi untuk audiens gaming, hingga visual estetis yang adaptif terhadap tren Instagram Reels untuk kebutuhan branding vendor.",
+    live: "https://www.tiktok.com/@itsjexxaa",
+    repo: "",
+  },
+  {
+    id: 5,
+    title: "Kompilasi Proyek Desain Grafis",
+    category: "Desain Grafis",
+    image: banner3,
+    description:
+      "Kumpulan dokumentasi karya eksplorasi desain grafis yang mencakup pembuatan poster kegiatan (SIMPADU, Sempro), poster website, logo brand (Vowture, Wedding), hingga materi promosi produk. Fokus pada komposisi visual dan tipografi yang efektif menggunakan ekosistem Canva.",
+    live: "",
+    repo: "",
+    gallery: [posterSimpadu, logoVowture, posterWeb, logoWedding, desainRoti, desainSempro],
+    tools: ["Canva"],
   },
   // Note: Proyek Video Editing dan Desain Grafis dikosongkan sementara sesuai permintaan
 ];

@@ -1,6 +1,16 @@
 import { motion } from "motion/react";
 import { Scissors } from "lucide-react";
 import aboutPhoto from "../../assets/bisrivow.jpg";
+import pengalaman1 from "../../assets/pengalaman1.jpg";
+import pengalaman2 from "../../assets/pengalaman2.jpg";
+import pengalaman3 from "../../assets/pengalaman3.jpg";
+import pengalaman4 from "../../assets/pengalaman4.jpg";
+import pengalaman5 from "../../assets/pengalaman5.jpg";
+import pengalaman6 from "../../assets/pengalaman6.jpg";
+import pengalaman7 from "../../assets/pengalaman7.jpg";
+import pengalaman8 from "../../assets/pengalaman8.jpg";
+import pengalaman9 from "../../assets/pengalaman9.jpg";
+import pengalaman10 from "../../assets/pengalaman10.jpg";
 
 export function About() {
   const education = [
@@ -61,20 +71,20 @@ export function About() {
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-center relative z-10">
-        
-        {/* Left Column: Text Information */}
-        <motion.div 
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start relative z-10">
+
+        {/* Top Text: header, intro paragraph, stats - spans left on desktop */}
+        <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }} // once: false allows animation to repeat on scroll
+          viewport={{ once: false, amount: 0.3 }}
           variants={fadeInOut}
-          className="lg:col-span-7"
+          className="lg:col-span-7 col-span-12"
         >
           <h2 className="text-4xl md:text-5xl font-[Montserrat] font-extrabold text-white mb-6 uppercase tracking-tight">
             Tentang <span className="text-purple-500">Saya</span>
           </h2>
-          
+
           <div className="w-20 h-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-8" />
 
           <p className="text-gray-300 text-lg font-[Montserrat] leading-relaxed mb-8">
@@ -94,97 +104,15 @@ export function About() {
               <p className="text-sm text-gray-400">6 bulan saat SMK + 4 bulan saat kuliah</p>
             </div>
           </div>
-
-          {/* Education Section */}
-          <div className="mb-10">
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pendidikan & Latar Belakang</h3>
-            <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
-              {education.map((edu, index) => (
-                <div key={index} className="relative">
-                  {/* Dot on timeline */}
-                  <span className="absolute -left-[39px] top-1.5 w-5 h-5 rounded-full bg-zinc-950 border-4 border-purple-500" />
-                  
-                  <span className="text-purple-400 font-[Montserrat] font-bold text-sm bg-purple-900/20 px-3 py-1 rounded-md mb-2 inline-block">
-                    {edu.year}
-                  </span>
-                  <h4 className="text-xl text-white font-[Montserrat] font-bold mt-1">
-                    {edu.school}
-                  </h4>
-                  <p className="text-gray-400 font-[Montserrat] text-base">
-                    {edu.major}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Experience Section */}
-          <div className="mb-10">
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pengalaman Kerja</h3>
-            <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
-              {experience.map((exp, idx) => (
-                <div key={idx} className="relative">
-                  <span className="absolute -left-[39px] top-1.5 w-5 h-5 rounded-full bg-zinc-950 border-4 border-indigo-500" />
-
-                  <span className="text-indigo-400 font-[Montserrat] font-bold text-sm bg-indigo-900/20 px-3 py-1 rounded-md mb-2 inline-block">
-                    {exp.year}
-                  </span>
-                  <h4 className="text-xl text-white font-[Montserrat] font-bold mt-1">{exp.role}</h4>
-                  <p className="text-purple-400 font-[Montserrat] font-semibold mb-1">{exp.company}</p>
-                  <p className="text-gray-400 font-[Montserrat] text-base">{exp.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Software Skills */}
-          <div>
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Keahlian Perangkat Lunak</h3>
-            <div className="flex flex-wrap gap-4">
-              
-              
-              
-                {/* 1. Frontend Dev (React logo) */}
-                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-purple-500 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Frontend">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-9 h-9" />
-                </div>
-
-                {/* 2. Mobile Dev (Flutter logo) */}
-                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-indigo-500 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Mobile">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-9 h-9" />
-                </div>
-
-                {/* 3. Figma (logo) */}
-                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-[#F24E1E] flex items-center justify-center shadow-[0_0_15px_rgba(242,78,30,0.3)] hover:scale-110 transition-transform cursor-default" title="Figma">
-                  <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" className="w-9 h-9" />
-                </div>
-
-                {/* 4. CapCut (logo) */}
-                <div className="w-16 h-16 rounded-2xl bg-[#000000] border border-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform cursor-default" title="Penyunting Video (CapCut)">
-                  <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBaQDG.nPeYqpMXSUQbV6ZbCL6QTM3OVwY7Kj03Rv3m5nPdh34eCofRrj.Az92oGHX6l3krAeKjdsSw1nRkJBRqg-&format=source&h=170" alt="CapCut" className="w-9 h-9" />
-                </div>
-
-                {/* 5. Canva (logo) */}
-                <div className="w-16 h-16 rounded-2xl bg-[#001e36] border border-[#00C4CC] flex items-center justify-center shadow-[0_0_15px_rgba(0,196,204,0.15)] hover:scale-110 transition-transform cursor-default" title="Canva">
-                  <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBb8YkqrmoFjcMUJULGOJelC8Ine_BvOlvZ_c8f6Cr9YsezlXNTSuDxwdHYQQUld3hgZ5BMUud35l9ZrayGmr4xA-&format=source&h=170" alt="Canva" className="w-9 h-9" />
-                </div>
-
-                {/* 6. CorelDraw (logo) */}
-                <div className="w-16 h-16 rounded-2xl bg-[#0b330e] border border-[#5ebd3e] flex items-center justify-center shadow-[0_0_15px_rgba(94,189,62,0.3)] hover:scale-110 transition-transform cursor-default" title="CorelDraw">
-                  <img src="https://cdn.simpleicons.org/coreldraw/5ebd3e" alt="CorelDraw" className="w-9 h-9" />
-                </div>
-
-            </div>
-          </div>
         </motion.div>
 
-        {/* Right Column: Photo Area */}
+        {/* Photo: placed after intro in DOM so on mobile it appears below intro and above education; on desktop spans right */}
         <motion.div
            initial={{ opacity: 0, scale: 0.9 }}
            whileInView={{ opacity: 1, scale: 1 }}
-           viewport={{ once: false, amount: 0.3 }} // Animated every time it enters view
+           viewport={{ once: false, amount: 0.3 }}
            transition={{ duration: 0.6, delay: 0.2 }}
-           className="lg:col-span-5 relative mt-12 lg:mt-0 flex justify-center"
+           className="lg:col-span-5 col-span-12 relative mt-6 lg:mt-0 flex justify-center"
         >
           {/* Decorative Backdrops (Blobs) */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-purple-600 to-indigo-600 rounded-full opacity-20 blur-3xl animate-pulse" />
@@ -210,6 +138,144 @@ export function About() {
              </div>
           </div>
         </motion.div>
+
+        {/* Remaining sections: Education, Experience, Skills - placed below on desktop/mobile */}
+        <div className="lg:col-span-12 col-span-12">
+          {/* Education Section */}
+          <div className="mb-10">
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pendidikan & Latar Belakang</h3>
+            <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
+              {education.map((edu, index) => (
+                <div key={index} className="relative">
+                  {/* Dot on timeline */}
+                  <span className="absolute -left-[39px] top-1.5 w-5 h-5 rounded-full bg-zinc-950 border-4 border-purple-500" />
+                  
+                  <span className="text-purple-400 font-[Montserrat] font-bold text-sm bg-purple-900/20 px-3 py-1 rounded-md mb-2 inline-block">
+                    {edu.year}
+                  </span>
+                  <h4 className="text-xl text-white font-[Montserrat] font-bold mt-1">
+                    {edu.school}
+                  </h4>
+                  <p className="text-gray-400 font-[Montserrat] text-base">
+                    {edu.major}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Experience Section + Dokumentasi Pengalaman (Gallery) */}
+          <div className="mb-10">
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pengalaman Kerja</h3>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Left: Experience Timeline */}
+              <div>
+                <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
+                  {experience.map((exp, idx) => (
+                    <div key={idx} className="relative">
+                      <span className="absolute -left-[39px] top-1.5 w-5 h-5 rounded-full bg-zinc-950 border-4 border-indigo-500" />
+
+                      <span className="text-indigo-400 font-[Montserrat] font-bold text-sm bg-indigo-900/20 px-3 py-1 rounded-md mb-2 inline-block">
+                        {exp.year}
+                      </span>
+                      <h4 className="text-xl text-white font-[Montserrat] font-bold mt-1">{exp.role}</h4>
+                      <p className="text-purple-400 font-[Montserrat] font-semibold mb-1">{exp.company}</p>
+                      <p className="text-gray-400 font-[Montserrat] text-base">{exp.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Dokumentasi Pengalaman - Bento Grid / Masonry Collage */}
+              <div>
+                <h4 className="text-lg text-white font-[Montserrat] font-semibold mb-4">Dokumentasi Pengalaman</h4>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:[grid-auto-rows:150px]">
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-10 blur-2xl pointer-events-none" />
+                    <img src={pengalaman1} alt="pengalaman1" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.05 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800 md:col-span-2 md:row-span-2">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-12 blur-3xl pointer-events-none" />
+                    <img src={pengalaman2} alt="pengalaman2" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.1 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-8 blur-2xl pointer-events-none" />
+                    <img src={pengalaman3} alt="pengalaman3" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.12 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800 md:col-span-2">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-11 blur-3xl pointer-events-none" />
+                    <img src={pengalaman4} alt="pengalaman4" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.14 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-8 blur-2xl pointer-events-none" />
+                    <img src={pengalaman5} alt="pengalaman5" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.16 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-8 blur-2xl pointer-events-none" />
+                    <img src={pengalaman6} alt="pengalaman6" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.18 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800 md:col-span-2">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-12 blur-3xl pointer-events-none" />
+                    <img src={pengalaman7} alt="pengalaman7" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.2 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-8 blur-2xl pointer-events-none" />
+                    <img src={pengalaman8} alt="pengalaman8" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  {/* New images pengalaman9 & pengalaman10 with same visual treatment as about photo */}
+                  <motion.div initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.22 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800 md:col-span-2">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-14 blur-3xl pointer-events-none" />
+                    <img src={pengalaman9} alt="pengalaman9" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 34 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 0.6, delay: 0.24 }} className="group relative rounded-3xl overflow-hidden shadow-2xl bg-zinc-900 border border-zinc-800">
+                    <div className="absolute inset-0 bg-gradient-to-tr from-purple-600 to-indigo-600 opacity-10 blur-2xl pointer-events-none" />
+                    <img src={pengalaman10} alt="pengalaman10" className="relative w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Software Skills */}
+          <div>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Keahlian Perangkat Lunak</h3>
+            <div className="flex flex-wrap gap-4">
+                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-purple-500 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Frontend">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-9 h-9" />
+                </div>
+
+                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-indigo-500 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Mobile">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-9 h-9" />
+                </div>
+
+                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-[#F24E1E] flex items-center justify-center shadow-[0_0_15px_rgba(242,78,30,0.3)] hover:scale-110 transition-transform cursor-default" title="Figma">
+                  <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" className="w-9 h-9" />
+                </div>
+
+                <div className="w-16 h-16 rounded-2xl bg-[#000000] border border-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform cursor-default" title="Penyunting Video (CapCut)">
+                  <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBaQDG.nPeYqpMXSUQbV6ZbCL6QTM3OVwY7Kj03Rv3m5nPdh34eCofRrj.Az92oGHX6l3krAeKjdsSw1nRkJBRqg-&format=source&h=170" alt="CapCut" className="w-9 h-9" />
+                </div>
+
+                <div className="w-16 h-16 rounded-2xl bg-[#001e36] border border-[#00C4CC] flex items-center justify-center shadow-[0_0_15px_rgba(0,196,204,0.15)] hover:scale-110 transition-transform cursor-default" title="Canva">
+                  <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBb8YkqrmoFjcMUJULGOJelC8Ine_BvOlvZ_c8f6Cr9YsezlXNTSuDxwdHYQQUld3hgZ5BMUud35l9ZrayGmr4xA-&format=source&h=170" alt="Canva" className="w-9 h-9" />
+                </div>
+
+                <div className="w-16 h-16 rounded-2xl bg-[#0b330e] border border-[#5ebd3e] flex items-center justify-center shadow-[0_0_15px_rgba(94,189,62,0.3)] hover:scale-110 transition-transform cursor-default" title="CorelDraw">
+                  <img src="https://cdn.simpleicons.org/coreldraw/5ebd3e" alt="CorelDraw" className="w-9 h-9" />
+                </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
