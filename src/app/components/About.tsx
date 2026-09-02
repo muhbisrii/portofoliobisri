@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
-import { Code2, Smartphone, Figma, Scissors } from "lucide-react";
-import aboutPhoto from "../../assets/aboutbisri.jpg";
+import { Scissors } from "lucide-react";
+import aboutPhoto from "../../assets/aboutbisri1.jpg";
 
 export function About() {
   const education = [
@@ -19,10 +19,10 @@ export function About() {
   // Animation variants for reusability and cleaner code
   const fadeInOut = {
     hidden: { opacity: 0, y: 50 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6 }
     }
   };
 
@@ -42,32 +42,32 @@ export function About() {
           className="lg:col-span-7"
         >
           <h2 className="text-4xl md:text-5xl font-[Montserrat] font-extrabold text-white mb-6 uppercase tracking-tight">
-            About <span className="text-purple-500">Me</span>
+            Tentang <span className="text-purple-500">Saya</span>
           </h2>
           
           <div className="w-20 h-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-8" />
 
           <p className="text-gray-300 text-lg font-[Montserrat] leading-relaxed mb-8">
-            Hi, I'm <strong className="text-white">Muhammad Bisri</strong>. I graduated from <strong className="text-purple-400">Politeknik Negeri Banjarmasin</strong> with a <strong className="text-white">D3 in Informatics Engineering</strong>, and my focus is on <strong className="text-white">Frontend Web & Mobile Development</strong>.
+            Hai, saya <strong className="text-white">Muhammad Bisri</strong>. Saya lulusan D3 Teknik Informatika dari <strong className="text-purple-400">Politeknik Negeri Banjarmasin</strong> dengan fokus utama pada <strong className="text-white">Full Stack Development</strong>.
             <br /><br />
-            I combine strong technical skills with a creative background shaped by my Multimedia studies at <strong className="text-purple-400">SMKN 1 Banjarmasin</strong>, allowing me to build interfaces that are not only functional but also visually polished.
+            Di samping dunia pemrograman, saya memiliki latar belakang pendidikan Multimedia di <strong className="text-purple-400">SMKN 1 Banjarmasin</strong>. Melalui fondasi tersebut, saya menguasai berbagai bidang kreatif media digital, seperti desain grafis, <em>video editing</em>, hingga produksi aset visual yang menarik dan komunikatif.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-4 mb-10">
             <div className="rounded-2xl border border-purple-500/20 bg-zinc-900/70 p-4">
-              <p className="text-sm uppercase tracking-[0.2em] text-purple-400 mb-1">GPA</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-purple-400 mb-1">IPK</p>
               <p className="text-2xl font-[Montserrat] font-bold text-white">3.67</p>
             </div>
             <div className="rounded-2xl border border-indigo-500/20 bg-zinc-900/70 p-4">
-              <p className="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-1">Internship</p>
-              <p className="text-lg font-[Montserrat] font-semibold text-white">10 months total</p>
-              <p className="text-sm text-gray-400">6 months during vocational school + 4 months during college</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-1">Magang</p>
+              <p className="text-lg font-[Montserrat] font-semibold text-white">Total 10 bulan</p>
+              <p className="text-sm text-gray-400">6 bulan saat SMK + 4 bulan saat kuliah</p>
             </div>
           </div>
 
           {/* Education Section */}
           <div className="mb-10">
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Education & Background</h3>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pendidikan & Latar Belakang</h3>
             <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
               {education.map((edu, index) => (
                 <div key={index} className="relative">
@@ -90,39 +90,40 @@ export function About() {
 
           {/* Software Skills */}
           <div>
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Software Skills</h3>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Keahlian Perangkat Lunak</h3>
             <div className="flex flex-wrap gap-4">
               
-              {/* 1. Frontend Dev */}
-              <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-purple-500 flex items-center justify-center text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:scale-110 transition-transform cursor-default" title="Frontend Dev">
-                <Code2 size={28} />
-              </div>
-
-              {/* 2. Mobile Dev */}
-              <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-indigo-500 flex items-center justify-center text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:scale-110 transition-transform cursor-default" title="Mobile Dev">
-                <Smartphone size={28} />
-              </div>
-
-              {/* 3. Figma */}
-              <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-[#F24E1E] flex items-center justify-center text-white shadow-[0_0_15px_rgba(242,78,30,0.3)] hover:scale-110 transition-transform cursor-default" title="Figma">
-                <Figma size={28} className="text-[#F24E1E]" />
-              </div>
-
-              {/* 4. CapCut */}
-              <div className="w-16 h-16 rounded-2xl bg-[#000000] border border-white flex items-center justify-center text-white shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform cursor-default" title="CapCut">
-                {/* Using Scissors as a metaphor for video editing since no CapCut icon in Lucide */}
-                <Scissors size={28} />
-              </div>
-
-              {/* 5. Photoshop Badge */}
-              <div className="w-16 h-16 rounded-2xl bg-[#001e36] border border-[#31a8ff] flex items-center justify-center text-[#31a8ff] font-bold text-xl font-[Montserrat] shadow-[0_0_15px_rgba(49,168,255,0.3)] hover:scale-110 transition-transform cursor-default" title="Adobe Photoshop">
-                Ps
-              </div>
               
-              {/* 6. CorelDraw Badge */}
-              <div className="w-16 h-16 rounded-2xl bg-[#0b330e] border border-[#5ebd3e] flex items-center justify-center text-[#5ebd3e] font-bold text-xl font-[Montserrat] shadow-[0_0_15px_rgba(94,189,62,0.3)] hover:scale-110 transition-transform cursor-default" title="CorelDraw">
-                Cd
-              </div>
+              
+                {/* 1. Frontend Dev (React logo) */}
+                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-purple-500 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Frontend">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-9 h-9" />
+                </div>
+
+                {/* 2. Mobile Dev (Flutter logo) */}
+                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-indigo-500 flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Mobile">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter" className="w-9 h-9" />
+                </div>
+
+                {/* 3. Figma (logo) */}
+                <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-[#F24E1E] flex items-center justify-center shadow-[0_0_15px_rgba(242,78,30,0.3)] hover:scale-110 transition-transform cursor-default" title="Figma">
+                  <img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" className="w-9 h-9" />
+                </div>
+
+                {/* 4. CapCut (logo) */}
+                <div className="w-16 h-16 rounded-2xl bg-[#000000] border border-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:scale-110 transition-transform cursor-default" title="Penyunting Video (CapCut)">
+                  <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBaQDG.nPeYqpMXSUQbV6ZbCL6QTM3OVwY7Kj03Rv3m5nPdh34eCofRrj.Az92oGHX6l3krAeKjdsSw1nRkJBRqg-&format=source&h=170" alt="CapCut" className="w-9 h-9" />
+                </div>
+
+                {/* 5. Canva (logo) */}
+                <div className="w-16 h-16 rounded-2xl bg-[#001e36] border border-[#00C4CC] flex items-center justify-center shadow-[0_0_15px_rgba(0,196,204,0.15)] hover:scale-110 transition-transform cursor-default" title="Canva">
+                  <img src="https://images-eds-ssl.xboxlive.com/image?url=4rt9.lXDC4H_93laV1_eHM0OYfiFeMI2p9MWie0CvL99U4GA1gf6_kayTt_kBblFwHwo8BW8JXlqfnYxKPmmBb8YkqrmoFjcMUJULGOJelC8Ine_BvOlvZ_c8f6Cr9YsezlXNTSuDxwdHYQQUld3hgZ5BMUud35l9ZrayGmr4xA-&format=source&h=170" alt="Canva" className="w-9 h-9" />
+                </div>
+
+                {/* 6. CorelDraw (logo) */}
+                <div className="w-16 h-16 rounded-2xl bg-[#0b330e] border border-[#5ebd3e] flex items-center justify-center shadow-[0_0_15px_rgba(94,189,62,0.3)] hover:scale-110 transition-transform cursor-default" title="CorelDraw">
+                  <img src="https://cdn.simpleicons.org/coreldraw/5ebd3e" alt="CorelDraw" className="w-9 h-9" />
+                </div>
 
             </div>
           </div>
@@ -156,7 +157,7 @@ export function About() {
 
              {/* Bottom Badge (Bottom Left) */}
              <div className="absolute bottom-8 left-0 bg-purple-600/90 backdrop-blur text-white font-[Montserrat] font-bold px-4 py-2 rounded-r-full shadow-lg">
-                South Borneo
+               Kalimantan Selatan
              </div>
           </div>
         </motion.div>

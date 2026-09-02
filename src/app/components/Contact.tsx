@@ -63,13 +63,13 @@ export function Contact() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-purple-500 font-[Montserrat] font-bold tracking-wider uppercase mb-3 block">
-            Contact Me
+            Hubungi Saya
           </span>
           <h2 className="text-4xl md:text-5xl font-[Montserrat] font-bold text-white mb-6">
-            Let's Connect
+            Mari Terhubung
           </h2>
           <p className="text-gray-400 text-lg mb-16 font-[Montserrat] leading-relaxed max-w-2xl mx-auto">
-            Open for opportunities. Feel free to connect with me for collaborations or professional inquiries.
+            Terbuka untuk kesempatan. Silakan hubungi saya untuk kolaborasi atau kebutuhan profesional.
           </p>
         </motion.div>
 
@@ -121,7 +121,7 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-xl font-[Montserrat] font-bold text-white mb-8">Follow My Socials</h3>
+          <h3 className="text-xl font-[Montserrat] font-bold text-white mb-8">Ikuti Saya di Media Sosial</h3>
           <div className="flex flex-wrap justify-center gap-6">
             {socialMedia.map((social, index) => (
               <a

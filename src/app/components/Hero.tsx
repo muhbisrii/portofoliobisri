@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { ArrowRight } from "lucide-react";
-import heroPhoto from "../../assets/berandabisri.jpg";
+import heroPhoto from "../../assets/bisri2.jpg";
 import Typewriter from "./Typewriter";
 
 export function Hero() {
@@ -24,12 +24,12 @@ export function Hero() {
           className="text-center md:text-left flex flex-col items-center md:items-start"
         >
           <span className="text-purple-400 font-[Montserrat] font-bold tracking-wider uppercase mb-4 block text-sm md:text-base">
-            Hello, I'm Muhammad Bisri
+            Halo, saya Muhammad Bisri
           </span>
-          <h1 className="text-4xl md:text-6xl font-[Montserrat] font-extrabold text-white leading-tight mb-6">
+          <h1 className="text-xl md:text-2xl font-[Montserrat] font-extrabold text-white leading-tight mb-6">
             <span>Crafting </span>
             <Typewriter
-              texts={["Web", "Mobile"]}
+              texts={["Digital Experiences"]}
               typingSpeed={90}
               deletingSpeed={40}
               pause={1400}
@@ -37,21 +37,37 @@ export function Hero() {
             />
           </h1>
           <p className="text-gray-400 text-base md:text-lg font-[Montserrat] mb-8 max-w-lg leading-relaxed">
-            Merging strong design foundations with modern engineering. A graduate of Informatics Engineering focused on building polished web and mobile experiences from <strong>Banjarmasin, Kalimantan Selatan</strong>.
+            Menjembatani dunia kode dan kreativitas. Lulusan Teknik Informatika dengan fondasi multimedia yang kuat, berfokus pada Full Stack Development, Desain Grafis, dan Video Editing untuk menciptakan aplikasi fungsional serta konten visual yang memikat. Berdomisili di <strong>Banjarmasin, Kalimantan Selatan</strong>.
           </p>
+
+          {/*
+            Option 2 (alternate) - to use this, replace the above Typewriter `texts` and paragraph with the following:
+
+            <Typewriter
+              texts={["Developer & Visual Creator"]}
+              typingSpeed={90}
+              deletingSpeed={40}
+              pause={1400}
+              className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500"
+            />
+
+            <p className="text-gray-400 text-base md:text-lg font-[Montserrat] mb-8 max-w-lg leading-relaxed">
+              Merging modern software engineering with visual storytelling. I build polished web and mobile applications while producing engaging graphic designs and video edits. Based in <strong>Banjarmasin, Kalimantan Selatan</strong>.
+            </p>
+          */}
           
           <div className="flex flex-wrap justify-center md:justify-start gap-4">
             <a
               href="#projects"
               className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2 shadow-lg shadow-purple-900/50"
             >
-              View Work <ArrowRight size={20} />
+              Lihat Karya <ArrowRight size={20} />
             </a>
             <a
               href="#contact"
               className="px-8 py-4 border border-gray-700 hover:border-purple-500 hover:text-purple-400 text-gray-300 font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2"
             >
-              Contact Me
+              Hubungi Saya
             </a>
           </div>
         </motion.div>

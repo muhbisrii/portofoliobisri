@@ -10,7 +10,7 @@ export function Footer() {
             Muhammad Bisri<span className="text-purple-500">.</span>
           </h3>
           <p className="text-gray-500 text-sm font-[Montserrat]">
-            © {new Date().getFullYear()} Muhammad Bisri. All Rights Reserved.
+            © {new Date().getFullYear()} Muhammad Bisri. Semua hak dilindungi.
           </p>
         </div>
 

@@ -57,12 +57,12 @@ export function ProjectDetail() {
             <div className="flex gap-2 mt-2">
               {project.live && (
                 <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 rounded-full text-white inline-flex items-center gap-2 text-sm hover:bg-purple-700 transition-colors">
-                  Live Demo <ExternalLink size={14} />
-                </a>
+                    Demo <ExternalLink size={14} />
+                  </a>
               )}
               {project.repo && (
                 <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-700 rounded-full text-gray-300 inline-flex items-center gap-2 text-sm hover:bg-zinc-800 transition-colors">
-                  <Github size={14} /> Source
+                  <Github size={14} /> Sumber
                 </a>
               )}
             </div>

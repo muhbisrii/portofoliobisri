@@ -9,7 +9,7 @@ export const projects = [
   {
     id: 1,
     title: "Website & Mobile Pengaduan Masyarakat - DP3A Banjarmasin",
-    category: "Government / Web & Mobile",
+    category: "Pemerintah / Web & Mobile",
     image: project1Img,
     description:
       "Website pengaduan masyarakat untuk Dinas Pemberdayaan Perempuan dan Perlindungan Anak Kota Banjarmasin. Situs ini dibuat saat magang di DP3A sebagai tugas magang — menyediakan fitur pengajuan laporan, manajemen kasus, dan dashboard admin.",
@@ -33,7 +33,7 @@ export const projects = [
   {
     id: 2,
     title: "Mobile Apps (Ringkas AI & Grow Track) - Wimedia",
-    category: "Mobile App",
+    category: "Aplikasi Mobile",
     image: project2Img,
     description:
       "Mengerjakan proyek wrapping apps untuk klien Wimedia, mengonversi platform web menjadi aplikasi mobile Android. Dari 3 aplikasi yang dikembangkan, saat ini 2 aplikasi telah berhasil dirilis secara publik di Google Play Store (Ringkas AI dan Grow Track).",

@@ -5,6 +5,7 @@ import certArutala from "../../assets/Arutala.png";
 import certAxioo1 from "../../assets/ACP1.png";
 import certAxioo2 from "../../assets/ACP2.png";
 import certAxioo3 from "../../assets/ACP3.png";
+import certBnsp from "../../assets/bnsp.jpg";
 import { projects } from "../data/projectsData";
 
 export function Projects() {
@@ -15,6 +16,7 @@ export function Projects() {
     { id: 2, title: "Axioo ACP #1", issuer: "Axioo", year: 2024, image: certAxioo1 },
     { id: 3, title: "Axioo ACP #2", issuer: "Axioo", year: 2024, image: certAxioo2 },
     { id: 4, title: "Axioo ACP #3", issuer: "Axioo", year: 2024, image: certAxioo3 },
+    { id: 5, title: "Junior Graphic Designer", issuer: "Sertifikasi Pribadi", year: 2026, image: certBnsp },
   ];
 
   const stack = [
@@ -75,9 +77,9 @@ export function Projects() {
           <span className="text-purple-500 font-[Montserrat] font-bold tracking-wider uppercase mb-2 block">
             Portofolio
           </span>
-          <h2 className="text-3xl md:text-5xl font-[Montserrat] font-bold text-white">Portfolio Showcase</h2>
+          <h2 className="text-3xl md:text-5xl font-[Montserrat] font-bold text-white">Portofolio</h2>
           <p className="mt-4 text-gray-400 font-[Montserrat] max-w-2xl">
-            Explore my journey through projects, certifications, and technical expertise. Each section represents a milestone in my continuous learning path.
+            Jelajahi perjalanan saya melalui proyek, sertifikasi, dan keahlian teknis. Setiap bagian mewakili tonggak dalam proses pembelajaran saya.
           </p>
         </div>
 
@@ -92,7 +94,7 @@ export function Projects() {
                   : "text-gray-300"
               }`}
             >
-              Projects
+              Proyek
             </button>
 
             <button
@@ -103,7 +105,7 @@ export function Projects() {
                   : "text-gray-300"
               }`}
             >
-              Certificates
+              Sertifikat
             </button>
 
             <button
@@ -114,7 +116,7 @@ export function Projects() {
                   : "text-gray-300"
               }`}
             >
-              Tech Stack
+              Teknologi
             </button>
           </div>
         </div>
@@ -142,16 +144,16 @@ export function Projects() {
 
                   <div className="flex items-center gap-3">
                     <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                      Live Demo <ExternalLink size={14} />
+                      Demo <ExternalLink size={14} />
                     </a>
 
                     {/* Tombol Details dikembalikan */}
                     <a href={`#project-${project.id}`} className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                      Details
+                      Detail
                     </a>
 
                     <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-800 rounded-full text-gray-300 hover:text-white text-sm inline-flex items-center gap-2">
-                      <Github size={14} /> Repo
+                      <Github size={14} /> Repositori
                     </a>
                   </div>
                 </div>
