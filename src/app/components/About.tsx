@@ -67,9 +67,9 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-zinc-950 relative overflow-hidden">
+    <section id="about" className="py-24 bg-zinc-950 relative overflow-hidden overflow-x-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none hidden lg:block" />
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start relative z-10">
 
@@ -93,34 +93,34 @@ export function About() {
             Di samping dunia pemrograman, saya memiliki latar belakang pendidikan Multimedia di <strong className="text-purple-400">SMKN 1 Banjarmasin</strong>. Melalui fondasi tersebut, saya menguasai berbagai bidang kreatif media digital, seperti desain grafis, <em>video editing</em>, hingga produksi aset visual yang menarik dan komunikatif.
           </p>
 
-          <div className="grid sm:grid-cols-2 gap-4 mb-10">
-            <div className="rounded-2xl border border-purple-500/20 bg-zinc-900/70 p-4">
+          <div className="grid sm:grid-cols-2 gap-3 mb-6">
+            <div className="rounded-2xl border border-purple-500/20 bg-zinc-900/70 p-3 md:p-4">
               <p className="text-sm uppercase tracking-[0.2em] text-purple-400 mb-1">IPK</p>
               <p className="text-2xl font-[Montserrat] font-bold text-white">3.67</p>
             </div>
-            <div className="rounded-2xl border border-indigo-500/20 bg-zinc-900/70 p-4">
+            <div className="rounded-2xl border border-indigo-500/20 bg-zinc-900/70 p-3 md:p-4">
               <p className="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-1">Magang</p>
-              <p className="text-lg font-[Montserrat] font-semibold text-white">Total 10 bulan</p>
+              <p className="text-base md:text-lg font-[Montserrat] font-semibold text-white">Total 10 bulan</p>
               <p className="text-sm text-gray-400">6 bulan saat SMK + 4 bulan saat kuliah</p>
             </div>
           </div>
         </motion.div>
 
         {/* Photo: placed after intro in DOM so on mobile it appears below intro and above education; on desktop spans right */}
-        <motion.div
+          <motion.div
            initial={{ opacity: 0, scale: 0.9 }}
            whileInView={{ opacity: 1, scale: 1 }}
            viewport={{ once: false, amount: 0.3 }}
            transition={{ duration: 0.6, delay: 0.2 }}
-           className="lg:col-span-5 col-span-12 relative mt-6 lg:mt-0 flex justify-center"
+            className="lg:col-span-5 col-span-12 relative mt-4 lg:mt-0 flex justify-center"
         >
           {/* Decorative Backdrops (Blobs) */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-purple-600 to-indigo-600 rounded-full opacity-20 blur-3xl animate-pulse" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-purple-600 to-indigo-600 rounded-full opacity-20 blur-3xl animate-pulse hidden md:block" />
           
-          <div className="absolute inset-4 rounded-[3rem] border-2 border-purple-500/30 rotate-6" />
+          <div className="absolute inset-4 rounded-[3rem] border-2 border-purple-500/30 rotate-6 hidden sm:block" />
           
           {/* Image Container */}
-          <div className="relative w-full max-w-sm aspect-[3/4] rounded-[2.5rem] overflow-hidden border-4 border-zinc-800 bg-zinc-900 shadow-2xl">
+          <div className="relative w-full max-w-xs sm:max-w-sm aspect-[3/4] rounded-[2.5rem] overflow-hidden border-4 border-zinc-800 bg-zinc-900 shadow-2xl">
              <img 
                src={aboutPhoto}
                alt="Muhammad Bisri"
@@ -128,12 +128,12 @@ export function About() {
              />
              
              {/* Floating Badge (Top Right) */}
-             <div className="absolute top-8 right-0 bg-yellow-500/90 backdrop-blur text-black font-[Montserrat] font-bold px-4 py-2 rounded-l-full shadow-lg transform translate-x-2 hover:translate-x-0 transition-transform">
+             <div className="absolute top-6 right-0 bg-yellow-500/90 backdrop-blur text-black font-[Montserrat] font-bold px-3 py-1.5 rounded-l-full shadow-lg transform translate-x-2 hover:translate-x-0 transition-transform hidden sm:block text-sm">
                 Banjarmasin
              </div>
 
              {/* Bottom Badge (Bottom Left) */}
-             <div className="absolute bottom-8 left-0 bg-purple-600/90 backdrop-blur text-white font-[Montserrat] font-bold px-4 py-2 rounded-r-full shadow-lg">
+             <div className="absolute bottom-6 left-0 bg-purple-600/90 backdrop-blur text-white font-[Montserrat] font-bold px-3 py-1.5 rounded-r-full shadow-lg hidden sm:block text-sm">
                Kalimantan Selatan
              </div>
           </div>
