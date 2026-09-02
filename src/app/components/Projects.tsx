@@ -10,6 +10,7 @@ import { projects } from "../data/projectsData";
 
 export function Projects() {
   const [active, setActive] = useState<"projects" | "certs" | "stack">("projects");
+  const [activeFilter, setActiveFilter] = useState<string>("Semua");
 
   const certificates = [
     { id: 1, title: "ArutalaLab Certificate", issuer: "ArutalaLab", year: 2025, image: certArutala },
@@ -19,56 +20,39 @@ export function Projects() {
     { id: 5, title: "Junior Graphic Designer", issuer: "Sertifikasi Pribadi", year: 2026, image: certBnsp },
   ];
 
-  const stack = [
-    {
-      name: "Flutter",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg",
-    },
-    {
-      name: "HTML",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-    },
-    {
-      name: "CSS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-    },
-    {
-      name: "JavaScript",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    },
-    {
-      name: "Tailwind CSS",
-      logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
-    },
-    {
-      name: "ReactJS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    },
-    {
-      name: "Vite",
-      logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg",
-    },
-    {
-      name: "Node JS",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    },
-    {
-      name: "Bootstrap",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg",
-    },
-    {
-      name: "Firebase",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg",
-    },
-    {
-      name: "Material UI",
-      logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg",
-    },
-    {
-      name: "Vercel",
-      logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg",
-    },
+  // Grouped tech stacks for clearer layout
+  const frontendStack: { name: string; logo: string }[] = [
+    { name: "HTML", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+    { name: "JavaScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "Tailwind CSS", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg" },
+    { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "Vite", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vitejs/vitejs-original.svg" },
+    { name: "Bootstrap", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" },
+    { name: "Material UI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg" },
   ];
+
+  const backendStack: { name: string; logo: string }[] = [
+    { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "Firebase", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-original.svg" },
+    { name: "Vercel", logo: "https://raw.githubusercontent.com/devicons/devicon/master/icons/vercel/vercel-original.svg" },
+  ];
+
+  const multimediaStack: { name: string; logo: string }[] = [
+    { name: "Figma", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/figma.svg" },
+    { name: "Canva", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/canva.svg" },
+    { name: "CapCut", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/capcut.svg" },
+    { name: "CorelDRAW", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/coreldraw.svg" },
+  ];
+
+  const filteredProjects = projects.filter((project) => {
+    if (activeFilter === "Semua") return true;
+    const cat = (project.category || "").toLowerCase();
+    if (activeFilter === "Web & Mobile") return cat.includes("web") || cat.includes("mobile");
+    if (activeFilter === "Video Editing") return cat.includes("video");
+    if (activeFilter === "Desain Grafis") return cat.includes("desain") || cat.includes("grafis") || cat.includes("design") || cat.includes("graphic");
+    return true;
+  });
 
   return (
     <section id="projects" className="py-24 bg-black relative">
@@ -121,10 +105,32 @@ export function Projects() {
           </div>
         </div>
 
+        {/* Filters: tampilkan hanya saat tab 'Proyek' aktif */}
+        {active === "projects" && (
+          <div className="flex gap-3 mb-8 items-center">
+            {["Semua", "Web & Mobile", "Video Editing", "Desain Grafis"].map((f) => (
+              <button
+                key={f}
+                onClick={() => setActiveFilter(f)}
+                className={`px-4 py-2 rounded-full text-sm font-[Montserrat] font-semibold transition-colors ${
+                  activeFilter === f
+                    ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white shadow-lg"
+                    : "text-gray-300 border border-zinc-800 bg-zinc-900/30"
+                }`}
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Content */}
         {active === "projects" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+              {filteredProjects.length === 0 ? (
+                <div className="col-span-full text-center text-gray-400">Tidak ada proyek untuk filter ini.</div>
+              ) : (
+                filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -158,7 +164,8 @@ export function Projects() {
                   </div>
                 </div>
               </motion.div>
-            ))}
+              ))
+            )}
           </div>
         )}
 
@@ -186,31 +193,75 @@ export function Projects() {
         )}
 
         {active === "stack" && (
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
-            {stack.map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.05 }}
-                className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-md group"
-                title={item.name}
-              >
-                <div className="w-16 h-16 rounded-lg bg-zinc-900 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
-                  <img
-                    src={item.logo}
-                    alt={item.name}
-                    className="w-11 h-11 object-contain transition-transform group-hover:scale-110"
-                    onError={(e) => {
-                      const el = e.target as HTMLImageElement;
-                      el.src = `https://ui-avatars.com/api/?name=${item.name}&background=333&color=fff`;
-                    }}
-                  />
-                </div>
-                <div className="text-sm text-gray-300 font-[Montserrat] text-center">{item.name}</div>
-              </motion.div>
-            ))}
+          <div className="space-y-10">
+            {/* Frontend & Web */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-300 mb-4">Frontend & Web</h3>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                {frontendStack.map((item: { name: string; logo: string }, idx: number) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.03 }}
+                    className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-md group"
+                    title={item.name}
+                  >
+                    <div className="w-16 h-16 rounded-lg bg-zinc-900 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                      <img src={item.logo} alt={item.name} className="w-11 h-11 object-contain transition-transform group-hover:scale-110" onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${item.name}&background=333&color=fff`; }} />
+                    </div>
+                    <div className="text-sm text-gray-300 font-[Montserrat] text-center">{item.name}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Backend & Cloud */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-300 mb-4">Backend & Cloud</h3>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                {backendStack.map((item: { name: string; logo: string }, idx: number) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.03 }}
+                    className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-md group"
+                    title={item.name}
+                  >
+                    <div className="w-16 h-16 rounded-lg bg-zinc-900 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                      <img src={item.logo} alt={item.name} className="w-11 h-11 object-contain transition-transform group-hover:scale-110" onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${item.name}&background=333&color=fff`; }} />
+                    </div>
+                    <div className="text-sm text-gray-300 font-[Montserrat] text-center">{item.name}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Multimedia & Design */}
+            <div>
+              <h3 className="text-xl font-semibold text-gray-300 mb-4">Multimedia & Design</h3>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
+                {multimediaStack.map((item: { name: string; logo: string }, idx: number) => (
+                  <motion.div
+                    key={item.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.03 }}
+                    className="flex flex-col items-center gap-3 p-4 rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-md group"
+                    title={item.name}
+                  >
+                    <div className="w-16 h-16 rounded-lg bg-zinc-900 flex items-center justify-center group-hover:bg-zinc-800 transition-colors">
+                      <img src={item.logo} alt={item.name} className="w-11 h-11 object-contain transition-transform group-hover:scale-110" onError={(e) => { (e.target as HTMLImageElement).src = `https://ui-avatars.com/api/?name=${item.name}&background=333&color=fff`; }} />
+                    </div>
+                    <div className="text-sm text-gray-300 font-[Montserrat] text-center">{item.name}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
       </div>

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import heroPhoto from "../../assets/bisri2.jpg";
 import Typewriter from "./Typewriter";
 
@@ -62,6 +62,14 @@ export function Hero() {
               className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2 shadow-lg shadow-purple-900/50"
             >
               Lihat Karya <ArrowRight size={20} />
+            </a>
+            <a
+              href="https://vowture.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="px-6 py-4 border border-purple-600 text-white hover:bg-purple-600/20 font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2"
+            >
+              Lihat Vowture <ExternalLink size={18} />
             </a>
             <a
               href="#contact"

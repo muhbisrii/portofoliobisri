@@ -16,6 +16,36 @@ export function About() {
     },
   ];
 
+  const experience = [
+    {
+      role: "Freelance Content Creator & Video Editor",
+      company: "Vowture",
+      year: "2025 - Sekarang",
+      description:
+        "Memproduksi konten visual, video editing adaptif tren media sosial, dan mengelola website portofolio digital.",
+    },
+    {
+      role: "Staf Magang IT & Keuangan",
+      company: "DPPPA Kota Banjarmasin",
+      year: "Sep 2025 - Des 2025",
+      description:
+        "Merancang dan mendemonstrasikan aplikasi Portal Pengaduan Publik berbasis web, serta digitalisasi dokumen administratif.",
+    },
+    {
+      role: "Mobile Apps Developer (Freelance)",
+      company: "Project Based",
+      year: "2026 - Sekarang",
+      description: "Mengembangkan antarmuka aplikasi mobile yang responsif dan fungsional.",
+    },
+    {
+      role: "Staf Magang Desainer Grafis",
+      company: "Istana Print",
+      year: "Jan 2022 - Sep 2022",
+      description:
+        "Merancang aset visual percetakan klien menggunakan CorelDRAW dan Canva dengan presisi tinggi.",
+    },
+  ];
+
   // Animation variants for reusability and cleaner code
   const fadeInOut = {
     hidden: { opacity: 0, y: 50 },
@@ -83,6 +113,25 @@ export function About() {
                   <p className="text-gray-400 font-[Montserrat] text-base">
                     {edu.major}
                   </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Experience Section */}
+          <div className="mb-10">
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pengalaman Kerja</h3>
+            <div className="space-y-8 border-l-2 border-zinc-800 pl-8 relative">
+              {experience.map((exp, idx) => (
+                <div key={idx} className="relative">
+                  <span className="absolute -left-[39px] top-1.5 w-5 h-5 rounded-full bg-zinc-950 border-4 border-indigo-500" />
+
+                  <span className="text-indigo-400 font-[Montserrat] font-bold text-sm bg-indigo-900/20 px-3 py-1 rounded-md mb-2 inline-block">
+                    {exp.year}
+                  </span>
+                  <h4 className="text-xl text-white font-[Montserrat] font-bold mt-1">{exp.role}</h4>
+                  <p className="text-purple-400 font-[Montserrat] font-semibold mb-1">{exp.company}</p>
+                  <p className="text-gray-400 font-[Montserrat] text-base">{exp.description}</p>
                 </div>
               ))}
             </div>
