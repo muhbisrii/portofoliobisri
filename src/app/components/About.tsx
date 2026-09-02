@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Scissors } from "lucide-react";
-import aboutPhoto from "../../assets/aboutbisri1.jpg";
+import aboutPhoto from "../../assets/bisrivow.jpg";
 
 export function About() {
   const education = [
