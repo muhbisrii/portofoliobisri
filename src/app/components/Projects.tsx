@@ -52,6 +52,10 @@ export function Projects() {
     if (activeFilter === "Video Editing") return cat.includes("video");
     if (activeFilter === "Desain Grafis") return cat.includes("desain") || cat.includes("grafis") || cat.includes("design") || cat.includes("graphic");
     return true;
+  }).sort((firstProject, secondProject) => {
+    if (activeFilter !== "Semua") return 0;
+    const allTabOrder = [4, 2, 6, 1, 5];
+    return allTabOrder.indexOf(firstProject.id) - allTabOrder.indexOf(secondProject.id);
   });
 
   return (

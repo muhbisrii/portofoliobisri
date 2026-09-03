@@ -81,6 +81,22 @@ export function ProjectDetail() {
             </div>
           </div>
         )}
+
+        {project.videoGallery && project.videoGallery.length > 0 && (
+          <div className="p-6 border-t border-zinc-800">
+            <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">Dokumentasi Video</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.videoGallery.map((item: { video: string; poster: string }, i: number) => (
+                <div key={i} className="rounded-lg bg-black/10 overflow-hidden">
+                  <video controls poster={item.poster} preload="metadata" className="w-full rounded-xl object-cover">
+                    <source src={item.video} type="video/mp4" />
+                    Browser Anda tidak mendukung pemutaran video.
+                  </video>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

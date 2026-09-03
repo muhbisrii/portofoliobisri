@@ -12,6 +12,21 @@ import posterWeb from "../../assets/poster web.png";
 import logoWedding from "../../assets/logo wedding.png";
 import desainRoti from "../../assets/desain roti.png";
 import desainSempro from "../../assets/desain sempro.png";
+import tiktokDocumentation from "../../assets/tiktokjexxa.jpg";
+import vowtureDocumentation from "../../assets/igvowture.jpg";
+import banner5 from "../../assets/banner5.jpg";
+import video1 from "../../assets/video1.mp4";
+import video2 from "../../assets/video2.mp4";
+import video3 from "../../assets/video3.mp4";
+import video4 from "../../assets/video4.mp4";
+import video5 from "../../assets/video5.mp4";
+import video6 from "../../assets/video6.mp4";
+import thumbnail1 from "../../assets/thumnail1.png";
+import thumbnail2 from "../../assets/thumnail2.png";
+import thumbnail3 from "../../assets/thumnail3.png";
+import thumbnail4 from "../../assets/thumnail4.png";
+import thumbnail5 from "../../assets/thumnail5.png";
+import thumbnail6 from "../../assets/thumnail6.png";
 
 export const projects = [
   {
@@ -68,6 +83,7 @@ export const projects = [
       "Mengelola dua portofolio media digital: akun TikTok esports (@itsjexxaa) dengan 122.000+ pengikut dan 19,9 juta likes, serta layanan dokumentasi pernikahan (@vowture). Proyek ini membuktikan fleksibilitas dan keahlian mumpuni dalam video editing menggunakan CapCut, mulai dari konten dinamis bertempo cepat dengan retensi tinggi untuk audiens gaming, hingga visual estetis yang adaptif terhadap tren Instagram Reels untuk kebutuhan branding vendor.",
     live: "https://www.tiktok.com/@itsjexxaa",
     repo: "",
+    gallery: [tiktokDocumentation, vowtureDocumentation],
   },
   {
     id: 5,
@@ -80,6 +96,25 @@ export const projects = [
     repo: "",
     gallery: [posterSimpadu, logoVowture, posterWeb, logoWedding, desainRoti, desainSempro],
     tools: ["Canva"],
+  },
+  {
+    id: 6,
+    title: "Dokumentasi & Video Konten DP3A",
+    category: "Video Editing",
+    image: banner5,
+    description:
+      "Di sela-sela tugas utama saya di bidang keuangan, saya juga membantu mendokumentasikan berbagai kegiatan umum maupun kegiatan bidang lain di Dinas Pemberdayaan Perempuan dan Perlindungan Anak (DP3A) Kota Banjarmasin, serta mengeditnya untuk kebutuhan konten publikasi pada akun Instagram resmi dinas.",
+    live: "",
+    repo: "",
+    tools: ["CapCut", "Instagram"],
+    videoGallery: [
+      { video: video1, poster: thumbnail1 },
+      { video: video2, poster: thumbnail2 },
+      { video: video3, poster: thumbnail3 },
+      { video: video4, poster: thumbnail4 },
+      { video: video5, poster: thumbnail5 },
+      { video: video6, poster: thumbnail6 },
+    ],
   },
   // Note: Proyek Video Editing dan Desain Grafis dikosongkan sementara sesuai permintaan
 ];
