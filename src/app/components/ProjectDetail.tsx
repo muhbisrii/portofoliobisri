@@ -39,8 +39,8 @@ export function ProjectDetail() {
         </div>
 
         <div className="p-6 grid md:grid-cols-3 gap-6">
-          <div className="md:col-span-2 flex items-center justify-center bg-black/10 rounded-lg p-4">
-            <img src={project.image} alt={project.title} className="w-full h-auto object-contain max-h-[640px] rounded" />
+          <div className={`md:col-span-2 flex items-center justify-center bg-black/10 rounded-lg p-4 ${project.id === 6 ? "h-[280px] md:h-[220px]" : ""}`}>
+            <img src={project.image} alt={project.title} className={`w-full h-auto object-contain rounded ${project.id === 6 ? "max-h-full" : "max-h-[640px]"}`} />
           </div>
 
           <div className="md:col-span-1 flex flex-col gap-4">
@@ -72,7 +72,7 @@ export function ProjectDetail() {
         {project.gallery && project.gallery.length > 0 && (
           <div className="p-6 border-t border-zinc-800">
             <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">Dokumentasi</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {project.gallery.map((img: string, i: number) => (
                 <div key={i} className="rounded-lg bg-black/10 flex items-center justify-center p-2">
                   <img src={img} alt={`doc-${i}`} className="max-w-full max-h-[420px] object-contain" />
@@ -85,8 +85,8 @@ export function ProjectDetail() {
         {project.videoGallery && project.videoGallery.length > 0 && (
           <div className="p-6 border-t border-zinc-800">
             <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">Dokumentasi Video</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {project.videoGallery.map((item: { video: string; poster: string }, i: number) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {project.videoGallery.map((item: { video: string; poster?: string }, i: number) => (
                 <div key={i} className="rounded-lg bg-black/10 overflow-hidden">
                   <video controls poster={item.poster} preload="metadata" className="w-full rounded-xl object-cover">
                     <source src={item.video} type="video/mp4" />

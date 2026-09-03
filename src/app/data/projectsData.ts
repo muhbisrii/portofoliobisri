@@ -21,12 +21,14 @@ import video3 from "../../assets/video3.mp4";
 import video4 from "../../assets/video4.mp4";
 import video5 from "../../assets/video5.mp4";
 import video6 from "../../assets/video6.mp4";
+import video7 from "../../assets/video7.mp4";
 import thumbnail1 from "../../assets/thumnail1.png";
 import thumbnail2 from "../../assets/thumnail2.png";
 import thumbnail3 from "../../assets/thumnail3.png";
 import thumbnail4 from "../../assets/thumnail4.png";
 import thumbnail5 from "../../assets/thumnail5.png";
 import thumbnail6 from "../../assets/thumnail6.png";
+import thumbnail7 from "../../assets/thumnail7.png";
 
 export const projects = [
   {
@@ -108,6 +110,7 @@ export const projects = [
     repo: "",
     tools: ["CapCut", "Instagram"],
     videoGallery: [
+      { video: video7, poster: thumbnail7 },
       { video: video1, poster: thumbnail1 },
       { video: video2, poster: thumbnail2 },
       { video: video3, poster: thumbnail3 },
