@@ -75,7 +75,7 @@ export const projects = [
     category: "Desain Grafis",
     image: banner3,
     description:
-      "Kumpulan dokumentasi karya eksplorasi desain grafis yang mencakup pembuatan poster kegiatan (SIMPADU, Sempro), poster website, logo brand (Vowture, Wedding), hingga materi promosi produk. Fokus pada komposisi visual dan tipografi yang efektif menggunakan ekosistem Canva.",
+      "Beberapa dokumentasi proyek eksplorasi desain grafis yang pernah saya kerjakan, mencakup pembuatan poster kegiatan (SIMPADU, Sempro), poster website, logo brand (Vowture, Wedding), hingga materi promosi produk. Berfokus pada komposisi visual dan tipografi yang efektif menggunakan ekosistem Canva.",
     live: "",
     repo: "",
     gallery: [posterSimpadu, logoVowture, posterWeb, logoWedding, desainRoti, desainSempro],
