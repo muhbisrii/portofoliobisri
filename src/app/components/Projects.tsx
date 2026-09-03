@@ -59,7 +59,7 @@ export function Projects() {
   });
 
   return (
-    <section id="projects" className="py-24 bg-black relative">
+    <section id="projects" className="py-20 bg-black relative">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-8 text-center md:text-left">
           <span className="text-purple-500 font-[Montserrat] font-bold tracking-wider uppercase mb-2 block">

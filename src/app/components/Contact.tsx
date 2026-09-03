@@ -51,7 +51,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-gradient-to-b from-zinc-950 to-black relative overflow-hidden">
+    <section id="contact" className="py-20 bg-gradient-to-b from-zinc-950 to-black relative overflow-hidden">
       {/* Background Elements (floating) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-tr from-purple-800 to-indigo-700 rounded-full blur-[100px] pointer-events-none opacity-30 animate-floating-slower" />
 

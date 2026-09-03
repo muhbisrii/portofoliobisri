@@ -66,7 +66,7 @@ export function About() {
   };
 
   return (
-    <section id="about" className="py-24 bg-zinc-950 relative w-full overflow-hidden">
+    <section id="about" className="py-20 bg-zinc-950 relative w-full overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-900/10 rounded-full blur-[120px] pointer-events-none hidden lg:block" />
 
