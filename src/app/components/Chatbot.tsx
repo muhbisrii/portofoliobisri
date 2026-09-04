@@ -1,32 +1,27 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
-import Groq from "groq-sdk";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useLanguage } from "../i18n";
 
-// Konfigurasi Groq API dengan prefix VITE_ untuk akses Client-side
-const groqApiKey = import.meta.env.VITE_GROQ_API_KEY;
-const groq = groqApiKey
-  ? new Groq({
-      apiKey: groqApiKey,
-      dangerouslyAllowBrowser: true,
-    })
-  : null;
+// Konfigurasi Gemini API dengan prefix VITE_ untuk akses Client-side
+const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const genAI = geminiApiKey ? new GoogleGenerativeAI(geminiApiKey) : null;
 
 export function Chatbot() {
   const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Halo! Saya AI Assistant Bisri. Saya siap membantu menjelaskan skill, pengalaman, dan fokus saya sebagai alumni IT." }
+    { role: "assistant", content: "Halo! Saya AI Assistant Bisri. Saya siap membantu menjelaskan skill, pengalaman, dan fokus Bisri sebagai profesional IT dan Multimedia." }
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(null);
 
   useEffect(() => {
     setMessages([{ role: "assistant", content: language === "id"
-      ? "Halo! Saya AI Assistant Bisri. Saya siap membantu menjelaskan skill, pengalaman, dan fokus saya sebagai alumni IT."
-      : "Hello! I am Bisri's AI Assistant. I can explain my skills, experience, and focus as an IT graduate." }]);
+      ? "Halo! Saya AI Assistant Bisri. Saya siap membantu menjelaskan skill, pengalaman, dan fokus Bisri sebagai profesional IT dan Multimedia."
+      : "Hello! I am Bisri's AI Assistant. I can explain Bisri's skills, experience, and focus as an IT and Multimedia professional." }]);
   }, [language]);
 
   // Auto scroll ke pesan terbaru
@@ -46,7 +41,7 @@ export function Chatbot() {
     setInput("");
     setIsLoading(true);
 
-    if (!groq) {
+    if (!genAI) {
       setMessages([
         ...newMessages,
         {
@@ -59,36 +54,53 @@ export function Chatbot() {
     }
 
     try {
-      const chatCompletion = await groq.chat.completions.create({
-        messages: [
-          { 
-            role: "system", 
-            content: `Kamu adalah Bisri AI Assistant, asisten virtual dari Bisri.
+      // Inisialisasi model Gemini 1.5 Flash beserta System Instructions (Otak AI)
+      const model = genAI.getGenerativeModel({
+        model: "gemini-2.5-flash",
+        systemInstruction: `Kamu adalah Bisri AI Assistant, asisten virtual representatif dari Muhammad Bisri.
             
-            PROFIL BISRI:
-            - Identitas: Lahir di Banjarmasin, 11 Februari 2004.
-            - Latar Belakang: Alumni D3 Teknik Informatika Politeknik Negeri Banjarmasin.
-            - Fokus: Frontend Web & Mobile Development, UI/UX, dan desain visual yang kuat.
-            - Kegiatan: Aktif membangun tampilan aplikasi yang modern serta mengeksplorasi teknologi frontend.
-            - Visi Karier: Menjadi developer profesional yang handal di bidang software engineering.
-            
-            GAYA BICARA:
-            - Ramah, profesional, dan to-the-point khas seorang developer IT.
-            - Jika ditanya hal di luar portofolio, arahkan kembali dengan sopan.`
-            + `\n\nJawab dalam bahasa ${language === "id" ? "Indonesia" : "Inggris"}, sesuai bahasa yang dipilih pengguna.`
-          },
-          // Spread messages yang ada
-          ...(newMessages as any),
-        ],
-        model: "llama-3.3-70b-versatile",
+        PROFIL BISRI (UPDATE TERBARU):
+        - Status: Fresh Graduate D3 Teknik Informatika dari Politeknik Negeri Banjarmasin (IPK 3.67).
+        - Fokus & Keahlian: Punya kompetensi komprehensif di dua bidang, yaitu Full Stack Development (React JS, Flutter, Laravel) dan Multimedia Kreatif (Graphic Design, Video Editing di balik layar).
+        - Nilai Jual (Value): Memadukan logika pemrograman untuk membangun aplikasi dengan keahlian visual untuk mengeksekusi UI/UX serta konten media yang estetis. Terbiasa mengeksekusi proyek secara terstruktur.
+        - Pengalaman Kerja/Magang: 
+          1. Staf IT & Keuangan di DP3A Banjarmasin (Merancang portal pengaduan publik & dokumentasi konten video Instagram dinas).
+          2. Freelance Content Creator & Video Editor (Mengelola media Vowture, konten Esports, dan Wedding).
+          3. Mobile Apps Developer (Project Based merancang antarmuka aplikasi seluler).
+          4. Staf Magang Desainer Grafis di Istana Print.
+        - Visi Karier: Siap berkontribusi penuh di lingkungan kerja profesional sebagai Full Stack Developer, Software Engineer, atau Creative Media Specialist.
+        
+        GAYA BICARA:
+        - Ramah, sangat profesional, percaya diri, dan to-the-point khas seorang pekerja IT.
+        - Jangan berbicara seolah-olah Bisri masih mahasiswa, gunakan nada bicara orang yang sudah lulus dan siap kerja.
+        - Jika ditanya hal di luar portofolio atau informasi pribadi yang di luar konteks, arahkan kembali dengan sopan ke karya dan pengalaman profesional Bisri.
+        
+        Jawab dalam bahasa ${language === "id" ? "Indonesia" : "Inggris"}, sesuai bahasa yang dipilih pengguna.`
       });
+
+      // Format array messages agar sesuai dengan API Gemini (role: "user" | "model")
+      const formattedContents = newMessages.map(msg => ({
+        role: msg.role === "assistant" ? "model" : "user",
+        parts: [{ text: msg.content }]
+      }));
+
+      // Eksekusi API Call
+      const chatCompletion = await model.generateContent({
+        contents: formattedContents
+      });
+
+      const aiResponseText = chatCompletion.response.text();
 
       setMessages([...newMessages, { 
         role: "assistant", 
-            content: chatCompletion.choices[0]?.message?.content || t("chatbotOfflineShort") 
+        content: aiResponseText || t("chatbotOfflineShort") 
       }]);
     } catch (error) {
       console.error("Chat Error:", error);
+      setMessages([...newMessages, { 
+        role: "assistant", 
+        content: "Maaf, koneksi ke server AI sedang terganggu. Silakan coba lagi nanti." 
+      }]);
     } finally {
       setIsLoading(false);
     }
