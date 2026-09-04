@@ -11,8 +11,10 @@ import pengalaman7 from "../../assets/pengalaman7.jpg";
 import pengalaman8 from "../../assets/pengalaman8.jpg";
 import pengalaman9 from "../../assets/pengalaman9.jpg";
 import pengalaman10 from "../../assets/pengalaman10.jpg";
+import { useLanguage } from "../i18n";
 
 export function About() {
+  const { language, t } = useLanguage();
   const education = [
     {
       year: "2023 - 2026",
@@ -30,29 +32,29 @@ export function About() {
     {
       role: "Freelance Content Creator & Video Editor",
       company: "Vowture",
-      year: "2025 - Sekarang",
+      year: language === "id" ? "2025 - Sekarang" : "2025 - Present",
       description:
-        "Memproduksi konten visual, video editing adaptif tren media sosial, dan mengelola website portofolio digital.",
+        language === "id" ? "Memproduksi konten visual, video editing adaptif tren media sosial, dan mengelola website portofolio digital." : "Produce visual content, adapt video edits to social media trends, and manage a digital portfolio website.",
     },
     {
       role: "Staf Magang IT & Keuangan",
       company: "DPPPA Kota Banjarmasin",
       year: "Sep 2025 - Des 2025",
       description:
-        "Merancang dan mendemonstrasikan aplikasi Portal Pengaduan Publik berbasis web, serta digitalisasi dokumen administratif.",
+        language === "id" ? "Merancang dan mendemonstrasikan aplikasi Portal Pengaduan Publik berbasis web, serta digitalisasi dokumen administratif." : "Designed and demonstrated a web-based Public Complaints Portal and digitized administrative documents.",
     },
     {
       role: "Mobile Apps Developer (Freelance)",
       company: "Project Based",
-      year: "2026 - Sekarang",
-      description: "Mengembangkan antarmuka aplikasi mobile yang responsif dan fungsional.",
+      year: language === "id" ? "2026 - Sekarang" : "2026 - Present",
+      description: language === "id" ? "Mengembangkan antarmuka aplikasi mobile yang responsif dan fungsional." : "Develop responsive and functional mobile application interfaces.",
     },
     {
       role: "Staf Magang Desainer Grafis",
       company: "Istana Print",
       year: "Jan 2022 - Sep 2022",
       description:
-        "Merancang aset visual percetakan klien menggunakan CorelDRAW dan Canva dengan presisi tinggi.",
+        language === "id" ? "Merancang aset visual percetakan klien menggunakan CorelDRAW dan Canva dengan presisi tinggi." : "Designed client print assets using CorelDRAW and Canva with high precision.",
     },
   ];
 
@@ -81,15 +83,15 @@ export function About() {
           className="lg:col-span-7"
         >
           <h2 className="text-4xl md:text-5xl font-[Montserrat] font-extrabold text-white mb-6 uppercase tracking-tight">
-            Tentang <span className="text-purple-500">Saya</span>
+            {t("aboutTitle")}
           </h2>
 
           <div className="w-20 h-1.5 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full mb-8" />
 
           <p className="text-gray-300 text-lg font-[Montserrat] leading-relaxed mb-8">
-            Hai, saya <strong className="text-white">Muhammad Bisri</strong>. Saya lulusan D3 Teknik Informatika dari <strong className="text-purple-400">Politeknik Negeri Banjarmasin</strong> dengan fokus utama pada <strong className="text-white">Full Stack Development</strong>.
+            {t("aboutText")}
             <br /><br />
-            Di samping dunia pemrograman, saya memiliki latar belakang pendidikan Multimedia di <strong className="text-purple-400">SMKN 1 Banjarmasin</strong>. Melalui fondasi tersebut, saya menguasai berbagai bidang kreatif media digital, seperti desain grafis, <em>video editing</em>, hingga produksi aset visual yang menarik dan komunikatif.
+            {t("aboutText2")}
           </p>
 
           <div className="grid sm:grid-cols-2 gap-3 mb-6">
@@ -98,9 +100,9 @@ export function About() {
               <p className="text-2xl font-[Montserrat] font-bold text-white">3.67</p>
             </div>
             <div className="rounded-2xl border border-indigo-500/20 bg-zinc-900/70 p-3 md:p-4">
-              <p className="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-1">Magang</p>
-              <p className="text-base md:text-lg font-[Montserrat] font-semibold text-white">Total 10 bulan</p>
-              <p className="text-sm text-gray-400 leading-tight">6 bulan saat SMK + 4 bulan saat kuliah</p>
+              <p className="text-sm uppercase tracking-[0.2em] text-indigo-400 mb-1">{t("internship")}</p>
+              <p className="text-base md:text-lg font-[Montserrat] font-semibold text-white">{t("internshipTotal")}</p>
+              <p className="text-sm text-gray-400 leading-tight">{t("internshipDetail")}</p>
             </div>
           </div>
         </motion.div>
@@ -136,7 +138,7 @@ export function About() {
           
           {/* Education Section */}
           <div className="mb-10 w-full">
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pendidikan & Latar Belakang</h3>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">{t("education")}</h3>
             <div className="space-y-8 border-l-2 border-zinc-800 ml-2 relative">
               {education.map((edu, index) => (
                 <div key={index} className="relative pl-6 lg:pl-8">
@@ -158,7 +160,7 @@ export function About() {
 
           {/* Experience Section */}
           <div className="mb-10 w-full">
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Pengalaman Kerja</h3>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">{t("experience")}</h3>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 w-full">
               
               {/* Left: Timeline */}
@@ -181,7 +183,7 @@ export function About() {
 
               {/* Right: Dokumentasi (10 Foto dengan Grid Rapat/Dense) */}
               <div className="w-full">
-                <h4 className="text-lg text-white font-[Montserrat] font-semibold mb-4">Dokumentasi Pengalaman</h4>
+                <h4 className="text-lg text-white font-[Montserrat] font-semibold mb-4">{t("documentation")}</h4>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3 lg:gap-4 auto-rows-[140px] grid-flow-row-dense">
                   
@@ -241,7 +243,7 @@ export function About() {
 
           {/* Software Skills */}
           <div>
-            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">Keahlian Perangkat Lunak</h3>
+            <h3 className="text-2xl font-[Montserrat] font-bold text-white mb-6">{t("softwareSkills")}</h3>
             <div className="flex flex-wrap gap-4">
                 <div className="w-16 h-16 rounded-2xl bg-[#1e1e1e] border border-purple-500 flex items-center justify-center shadow-[0_0_15px_rgba(168,85,247,0.3)] hover:scale-110 transition-transform cursor-default" title="Pengembangan Frontend">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="w-9 h-9" />

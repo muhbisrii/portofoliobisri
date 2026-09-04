@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Bot } from "lucide-react";
 import Groq from "groq-sdk";
+import { useLanguage } from "../i18n";
 
 // Konfigurasi Groq API dengan prefix VITE_ untuk akses Client-side
 const groqApiKey = import.meta.env.VITE_GROQ_API_KEY;
@@ -13,6 +14,7 @@ const groq = groqApiKey
   : null;
 
 export function Chatbot() {
+  const { language, t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([
@@ -20,6 +22,12 @@ export function Chatbot() {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMessages([{ role: "assistant", content: language === "id"
+      ? "Halo! Saya AI Assistant Bisri. Saya siap membantu menjelaskan skill, pengalaman, dan fokus saya sebagai alumni IT."
+      : "Hello! I am Bisri's AI Assistant. I can explain my skills, experience, and focus as an IT graduate." }]);
+  }, [language]);
 
   // Auto scroll ke pesan terbaru
   useEffect(() => {
@@ -43,7 +51,7 @@ export function Chatbot() {
         ...newMessages,
         {
           role: "assistant",
-          content: "Chatbot saat ini belum aktif karena API key belum dikonfigurasi.",
+          content: t("chatbotOffline"),
         },
       ]);
       setIsLoading(false);
@@ -67,6 +75,7 @@ export function Chatbot() {
             GAYA BICARA:
             - Ramah, profesional, dan to-the-point khas seorang developer IT.
             - Jika ditanya hal di luar portofolio, arahkan kembali dengan sopan.`
+            + `\n\nJawab dalam bahasa ${language === "id" ? "Indonesia" : "Inggris"}, sesuai bahasa yang dipilih pengguna.`
           },
           // Spread messages yang ada
           ...(newMessages as any),
@@ -76,7 +85,7 @@ export function Chatbot() {
 
       setMessages([...newMessages, { 
         role: "assistant", 
-        content: chatCompletion.choices[0]?.message?.content || "Maaf, saya sedang offline." 
+            content: chatCompletion.choices[0]?.message?.content || t("chatbotOfflineShort") 
       }]);
     } catch (error) {
       console.error("Chat Error:", error);
@@ -108,7 +117,7 @@ export function Chatbot() {
                 <div>
                   <h3 className="text-white font-bold text-sm">Bisri AI Assistant</h3>
                   <p className="text-purple-200 text-[10px] flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" /> Online
+                    <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" /> {t("online")}
                   </p>
                 </div>
               </div>
@@ -151,7 +160,7 @@ export function Chatbot() {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleChat()}
-                  placeholder="Ketik pertanyaan untuk Bisri..."
+                  placeholder={t("chatPlaceholder")}
                   className="w-full bg-black border border-zinc-700 rounded-full py-3 px-5 pr-12 text-sm text-white focus:outline-none focus:border-purple-500 transition-all placeholder:text-zinc-600"
                 />
                 <button 

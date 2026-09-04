@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { projects } from "../data/projectsData";
 import { ExternalLink, Github, X } from "lucide-react";
+import { useLanguage } from "../i18n";
+import { projectTranslations } from "../data/projectTranslations";
 
 export function ProjectDetail() {
+  const { language, t } = useLanguage();
   const [project, setProject] = useState<any | null>(null);
 
   useEffect(() => {
@@ -23,6 +26,10 @@ export function ProjectDetail() {
   }, []);
 
   if (!project) return null;
+  const localized = language === "en" ? projectTranslations[project.id] : project;
+  const projectTitle = localized?.title ?? project.title;
+  const projectCategory = localized?.category ?? project.category;
+  const projectDescription = localized?.description ?? project.description;
 
   return (
     <div className="fixed inset-0 z-60 flex items-start justify-center p-6">
@@ -30,8 +37,8 @@ export function ProjectDetail() {
       <div className="relative z-70 max-w-5xl w-full bg-zinc-900/95 border border-zinc-800 rounded-2xl overflow-auto" style={{ maxHeight: "94vh" }}>
         <div className="flex items-center justify-between p-4 border-b border-zinc-800">
           <div>
-            <h2 className="text-2xl font-[Montserrat] font-bold text-white">{project.title}</h2>
-            <p className="text-gray-400 text-sm">{project.category}</p>
+            <h2 className="text-2xl font-[Montserrat] font-bold text-white">{projectTitle}</h2>
+            <p className="text-gray-400 text-sm">{projectCategory}</p>
           </div>
           <button onClick={() => (window.location.hash = "#projects")} className="text-gray-300 hover:text-white p-2">
             <X />
@@ -44,25 +51,25 @@ export function ProjectDetail() {
           </div>
 
           <div className="md:col-span-1 flex flex-col gap-4">
-            <p className="text-gray-300">{project.description}</p>
+            <p className="text-gray-300">{projectDescription}</p>
 
             {/* Render bagian sections secara dinamis berdasarkan data proyek */}
             {project.sections && project.sections.map((section: any, index: number) => (
               <div key={index}>
-                <h4 className="text-sm text-gray-400 mb-2">{section.title}</h4>
-                <p className="text-gray-300 text-sm">{section.content}</p>
+                <h4 className="text-sm text-gray-400 mb-2">{localized?.sections?.[section.title]?.title ?? section.title}</h4>
+                <p className="text-gray-300 text-sm">{localized?.sections?.[section.title]?.content ?? section.content}</p>
               </div>
             ))}
 
             <div className="flex gap-2 mt-2">
               {project.live && (
                 <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 rounded-full text-white inline-flex items-center gap-2 text-sm hover:bg-purple-700 transition-colors">
-                    Demo <ExternalLink size={14} />
+                    {t("demo")} <ExternalLink size={14} />
                   </a>
               )}
               {project.repo && (
                 <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-700 rounded-full text-gray-300 inline-flex items-center gap-2 text-sm hover:bg-zinc-800 transition-colors">
-                  <Github size={14} /> Sumber
+                  <Github size={14} /> {t("source")}
                 </a>
               )}
             </div>
@@ -71,7 +78,7 @@ export function ProjectDetail() {
 
         {project.gallery && project.gallery.length > 0 && (
           <div className="p-6 border-t border-zinc-800">
-            <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">Dokumentasi</h4>
+            <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">{t("projectDocumentation")}</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {project.gallery.map((img: string, i: number) => (
                 <div key={i} className="rounded-lg bg-black/10 flex items-center justify-center p-2">
@@ -84,13 +91,13 @@ export function ProjectDetail() {
 
         {project.videoGallery && project.videoGallery.length > 0 && (
           <div className="p-6 border-t border-zinc-800">
-            <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">Dokumentasi Video</h4>
+            <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">{t("videoDocumentation")}</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               {project.videoGallery.map((item: { video: string; poster?: string }, i: number) => (
                 <div key={i} className="rounded-lg bg-black/10 overflow-hidden">
                   <video controls poster={item.poster} preload="metadata" className="w-full rounded-xl object-cover">
                     <source src={item.video} type="video/mp4" />
-                    Browser Anda tidak mendukung pemutaran video.
+                    {t("chatbotVideoUnsupported")}
                   </video>
                 </div>
               ))}

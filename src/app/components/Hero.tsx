@@ -2,8 +2,10 @@ import { motion } from "motion/react";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import heroPhoto from "../../assets/bisri2.jpg";
 import Typewriter from "./Typewriter";
+import { useLanguage } from "../i18n";
 
 export function Hero() {
+  const { t } = useLanguage();
   return (
     <section
       id="home"
@@ -24,12 +26,12 @@ export function Hero() {
           className="text-center md:text-left flex flex-col items-center md:items-start"
         >
           <span className="text-purple-400 font-[Montserrat] font-bold tracking-wider uppercase mb-4 block text-sm md:text-base">
-            Halo, saya Muhammad Bisri
+            {t("hello")}
           </span>
           <h1 className="text-xl md:text-2xl font-[Montserrat] font-extrabold text-white leading-tight mb-6">
-            <span>Crafting </span>
+            <span>{t("crafting")} </span>
             <Typewriter
-              texts={["Digital Experiences"]}
+              texts={[t("digitalExperiences")]}
               typingSpeed={90}
               deletingSpeed={40}
               pause={1400}
@@ -37,7 +39,7 @@ export function Hero() {
             />
           </h1>
           <p className="text-gray-400 text-base md:text-lg font-[Montserrat] mb-8 max-w-lg leading-relaxed">
-            Menjembatani dunia kode dan kreativitas. Lulusan Teknik Informatika dengan fondasi multimedia yang kuat, berfokus pada Full Stack Development, Desain Grafis, dan Video Editing untuk menciptakan aplikasi fungsional serta konten visual yang memikat. Berdomisili di <strong>Banjarmasin, Kalimantan Selatan</strong>.
+            {t("heroDescription")} <strong>Banjarmasin, Kalimantan Selatan</strong>.
           </p>
 
           {/*
@@ -61,7 +63,7 @@ export function Hero() {
               href="#projects"
               className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2 shadow-lg shadow-purple-900/50"
             >
-              Lihat Karya <ArrowRight size={20} />
+              {t("viewWork")} <ArrowRight size={20} />
             </a>
             <a
               href="https://vowture.vercel.app"
@@ -69,13 +71,13 @@ export function Hero() {
               rel="noreferrer"
               className="px-6 py-4 border border-purple-600 text-white hover:bg-purple-600/20 font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2"
             >
-              Lihat Vowture <ExternalLink size={18} />
+              {t("viewVowture")} <ExternalLink size={18} />
             </a>
             <a
               href="#contact"
               className="px-8 py-4 border border-gray-700 hover:border-purple-500 hover:text-purple-400 text-gray-300 font-[Montserrat] font-bold rounded-full transition-all flex items-center gap-2"
             >
-              Hubungi Saya
+              {t("contactMe")}
             </a>
           </div>
         </motion.div>

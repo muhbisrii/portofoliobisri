@@ -1,7 +1,9 @@
 import { motion } from "motion/react";
 import { Mail, MapPin, Youtube, Instagram, Phone, Linkedin } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 export function Contact() {
+  const { t } = useLanguage();
   const contactInfo = [
     {
       icon: <Mail size={28} />,
@@ -21,7 +23,7 @@ export function Contact() {
     },
     {
       icon: <MapPin size={28} />,
-      label: "Location",
+      label: t("location"),
       value: "Banjarmasin, Kalimantan Selatan",
       href: null,
       color: "text-red-400",
@@ -63,13 +65,13 @@ export function Contact() {
           transition={{ duration: 0.6 }}
         >
           <span className="text-purple-500 font-[Montserrat] font-bold tracking-wider uppercase mb-3 block">
-            Hubungi Saya
+            {t("contactMe")}
           </span>
           <h2 className="text-4xl md:text-5xl font-[Montserrat] font-bold text-white mb-6">
-            Mari Terhubung
+            {t("contactHeading")}
           </h2>
           <p className="text-gray-400 text-lg mb-16 font-[Montserrat] leading-relaxed max-w-2xl mx-auto">
-            Terbuka untuk kesempatan. Silakan hubungi saya untuk kolaborasi atau kebutuhan profesional.
+            {t("contactDescription")}
           </p>
         </motion.div>
 
@@ -121,7 +123,7 @@ export function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="text-xl font-[Montserrat] font-bold text-white mb-8">Ikuti Saya di Media Sosial</h3>
+          <h3 className="text-xl font-[Montserrat] font-bold text-white mb-8">{t("followMe")}</h3>
           <div className="flex flex-wrap justify-center gap-6">
             {socialMedia.map((social, index) => (
               <a

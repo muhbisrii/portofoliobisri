@@ -1,6 +1,8 @@
 import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { useLanguage } from "../i18n";
 
 export function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-black border-t border-zinc-900 py-12">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -10,7 +12,7 @@ export function Footer() {
             Muhammad Bisri<span className="text-purple-500">.</span>
           </h3>
           <p className="text-gray-500 text-sm font-[Montserrat]">
-            © {new Date().getFullYear()} Muhammad Bisri. Semua hak dilindungi.
+            © {new Date().getFullYear()} Muhammad Bisri. {t("rights")}
           </p>
         </div>
 

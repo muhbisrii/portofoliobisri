@@ -7,17 +7,20 @@ import certAxioo2 from "../../assets/ACP2.png";
 import certAxioo3 from "../../assets/ACP3.png";
 import certBnsp from "../../assets/bnsp.jpg";
 import { projects } from "../data/projectsData";
+import { useLanguage } from "../i18n";
+import { projectTranslations } from "../data/projectTranslations";
 
 export function Projects() {
+  const { language, t } = useLanguage();
   const [active, setActive] = useState<"projects" | "certs" | "stack">("projects");
-  const [activeFilter, setActiveFilter] = useState<string>("Semua");
+  const [activeFilter, setActiveFilter] = useState<string>("all");
 
   const certificates = [
     { id: 1, title: "ArutalaLab Certificate", issuer: "ArutalaLab", year: 2025, image: certArutala },
     { id: 2, title: "Axioo ACP #1", issuer: "Axioo", year: 2024, image: certAxioo1 },
     { id: 3, title: "Axioo ACP #2", issuer: "Axioo", year: 2024, image: certAxioo2 },
     { id: 4, title: "Axioo ACP #3", issuer: "Axioo", year: 2024, image: certAxioo3 },
-    { id: 5, title: "Junior Graphic Designer", issuer: "Sertifikasi Pribadi", year: 2026, image: certBnsp },
+    { id: 5, title: "Junior Graphic Designer", issuer: language === "id" ? "Sertifikasi Pribadi" : "Personal Certification", year: 2026, image: certBnsp },
   ];
 
   // Grouped tech stacks for clearer layout
@@ -46,14 +49,14 @@ export function Projects() {
   ];
 
   const filteredProjects = projects.filter((project) => {
-    if (activeFilter === "Semua") return true;
+    if (activeFilter === "all") return true;
     const cat = (project.category || "").toLowerCase();
-    if (activeFilter === "Web & Mobile") return cat.includes("web") || cat.includes("mobile");
-    if (activeFilter === "Video Editing") return cat.includes("video");
-    if (activeFilter === "Desain Grafis") return cat.includes("desain") || cat.includes("grafis") || cat.includes("design") || cat.includes("graphic");
+    if (activeFilter === "web") return cat.includes("web") || cat.includes("mobile");
+    if (activeFilter === "video") return cat.includes("video");
+    if (activeFilter === "design") return cat.includes("desain") || cat.includes("grafis") || cat.includes("design") || cat.includes("graphic");
     return true;
   }).sort((firstProject, secondProject) => {
-    if (activeFilter !== "Semua") return 0;
+    if (activeFilter !== "all") return 0;
     const allTabOrder = [4, 2, 6, 1, 5];
     return allTabOrder.indexOf(firstProject.id) - allTabOrder.indexOf(secondProject.id);
   });
@@ -63,11 +66,11 @@ export function Projects() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-8 text-center md:text-left">
           <span className="text-purple-500 font-[Montserrat] font-bold tracking-wider uppercase mb-2 block">
-            Portofolio
+            {t("portfolio")}
           </span>
-          <h2 className="text-3xl md:text-5xl font-[Montserrat] font-bold text-white">Portofolio</h2>
+          <h2 className="text-3xl md:text-5xl font-[Montserrat] font-bold text-white">{t("portfolio")}</h2>
           <p className="mt-4 text-gray-400 font-[Montserrat] max-w-2xl">
-            Jelajahi perjalanan saya melalui proyek, sertifikasi, dan keahlian teknis. Setiap bagian mewakili tonggak dalam proses pembelajaran saya.
+            {t("portfolioDescription")}
           </p>
         </div>
 
@@ -82,7 +85,7 @@ export function Projects() {
                   : "text-gray-300"
               }`}
             >
-              Proyek
+              {t("projects")}
             </button>
 
             <button
@@ -93,7 +96,7 @@ export function Projects() {
                   : "text-gray-300"
               }`}
             >
-              Sertifikat
+              {t("certificates")}
             </button>
 
             <button
@@ -104,7 +107,7 @@ export function Projects() {
                   : "text-gray-300"
               }`}
             >
-              Teknologi
+              {t("technology")}
             </button>
           </div>
         </div>
@@ -112,17 +115,17 @@ export function Projects() {
         {/* Filters: tampilkan hanya saat tab 'Proyek' aktif */}
         {active === "projects" && (
           <div className="flex gap-3 mb-8 items-center">
-            {["Semua", "Web & Mobile", "Video Editing", "Desain Grafis"].map((f) => (
+            {[[t("all"), "all"], [t("webMobile"), "web"], [t("videoEditing"), "video"], [t("graphicDesign"), "design"]].map(([label, value]) => (
               <button
-                key={f}
-                onClick={() => setActiveFilter(f)}
+                key={value}
+                onClick={() => setActiveFilter(value)}
                 className={`px-4 py-2 rounded-full text-sm font-[Montserrat] font-semibold transition-colors ${
-                  activeFilter === f
+                  activeFilter === value
                     ? "bg-gradient-to-r from-purple-700 to-indigo-600 text-white shadow-lg"
                     : "text-gray-300 border border-zinc-800 bg-zinc-900/30"
                 }`}
               >
-                {f}
+                {label}
               </button>
             ))}
           </div>
@@ -132,9 +135,13 @@ export function Projects() {
         {active === "projects" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
               {filteredProjects.length === 0 ? (
-                <div className="col-span-full text-center text-gray-400">Tidak ada proyek untuk filter ini.</div>
+                <div className="col-span-full text-center text-gray-400">{t("noProjects")}</div>
               ) : (
                 filteredProjects.map((project) => {
+                  const localized = language === "en" ? projectTranslations[project.id] : project;
+                  const projectTitle = localized?.title ?? project.title;
+                  const projectCategory = localized?.category ?? project.category;
+                  const projectDescription = localized?.description ?? project.description;
                   const cat = (project.category || "").toLowerCase();
                   const isWebMobile = cat.includes("web") || cat.includes("mobile");
                   const isCombinedContent = project.title === "Digital Content Creator (Esports & Wedding)";
@@ -148,29 +155,29 @@ export function Projects() {
                       className="group overflow-hidden rounded-2xl bg-zinc-900/30 border border-zinc-800"
                     >
                       <div className="w-full aspect-[4/3] flex items-center justify-center bg-black/10 p-4">
-                        <img src={project.image} alt={project.title} className="max-w-full max-h-full object-contain rounded-lg shadow" />
+                        <img src={project.image} alt={projectTitle} className="max-w-full max-h-full object-contain rounded-lg shadow" />
                       </div>
 
                       <div className="p-6">
-                        <span className="text-purple-400 font-[Montserrat] text-sm font-bold uppercase tracking-wide mb-2 block">{project.category}</span>
-                        <h3 className="text-lg font-[Montserrat] font-bold text-white mb-2">{project.title}</h3>
-                        <p className="text-gray-300 text-sm mb-4 line-clamp-3">{project.description}</p>
+                        <span className="text-purple-400 font-[Montserrat] text-sm font-bold uppercase tracking-wide mb-2 block">{projectCategory}</span>
+                        <h3 className="text-lg font-[Montserrat] font-bold text-white mb-2">{projectTitle}</h3>
+                        <p className="text-gray-300 text-sm mb-4 line-clamp-3">{projectDescription}</p>
 
                         <div className="flex items-center gap-3">
                           {isWebMobile && (
                             <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                              Demo <ExternalLink size={14} />
+                              {t("demo")} <ExternalLink size={14} />
                             </a>
                           )}
 
                           {/* Tombol Details dikembalikan */}
                           <a href={`#project-${project.id}`} className="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-white rounded-full text-sm inline-flex items-center gap-2">
-                            Detail
+                            {t("detail")}
                           </a>
 
                           {isWebMobile && (
                             <a href={project.repo} target="_blank" rel="noreferrer" className="px-3 py-2 border border-zinc-800 rounded-full text-gray-300 hover:text-white text-sm inline-flex items-center gap-2">
-                              <Github size={14} /> Repositori
+                              <Github size={14} /> {t("repository")}
                             </a>
                           )}
 
@@ -266,7 +273,7 @@ export function Projects() {
 
             {/* Multimedia & Design */}
             <div>
-              <h3 className="text-xl font-semibold text-gray-300 mb-4">Multimedia & Design</h3>
+              <h3 className="text-xl font-semibold text-gray-300 mb-4">{language === "id" ? "Multimedia & Desain" : "Multimedia & Design"}</h3>
               <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-6">
                 {multimediaStack.map((item: { name: string; logo: string }, idx: number) => (
                   <motion.div

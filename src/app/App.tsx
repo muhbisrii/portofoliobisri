@@ -6,18 +6,21 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import ProjectDetail from "./components/ProjectDetail";
 import { Chatbot } from "./components/Chatbot"; // Import di atas
+import { LanguageProvider } from "./i18n";
 
 export default function App() {
   return (
-    <div className="bg-black min-h-screen text-white selection:bg-purple-500 selection:text-white">
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Chatbot />
-      <Footer />
-      <ProjectDetail />
-    </div>
+    <LanguageProvider>
+      <div className="bg-black min-h-screen text-white selection:bg-purple-500 selection:text-white">
+        <Navbar />
+        <Hero />
+        <About />
+        <Projects />
+        <Contact />
+        <Chatbot />
+        <Footer />
+        <ProjectDetail />
+      </div>
+    </LanguageProvider>
   );
 }
