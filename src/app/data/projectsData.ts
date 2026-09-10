@@ -1,5 +1,6 @@
 import project1Img from "../../assets/project1.png";
 import project2Img from "../../assets/project2.png";
+import project10Img from "../../assets/project10.jpg";
 import magang1 from "../../assets/magang1.jpg";
 import magang2 from "../../assets/magang2.jpeg";
 import magang3 from "../../assets/magang3.jpg";
@@ -118,6 +119,18 @@ export const projects = [
       { video: video5, poster: thumbnail5 },
       { video: video6, poster: thumbnail6 },
     ],
+  },
+  {
+    id: 7,
+    title: 'Short Movie - "Urusan dunia, membuatmu terlena"',
+    category: "Video Editing / Video",
+    image: project10Img,
+    description:
+      "Film pendek tugas kuliah semester 2. Berperan sebagai videografer (storyboard & pengambilan sudut gambar) sekaligus video editor (cutting, color grading, dan audio mixing) untuk menghasilkan karya audio-visual yang utuh.",
+    role: "Videografer & Video Editor",
+    live: "https://drive.google.com/file/d/1hRAU0h7QGcA72aSr3-cl3uBLW1l-asFf/view?usp=drive_link",
+    videoEmbed: "https://drive.google.com/file/d/1hRAU0h7QGcA72aSr3-cl3uBLW1l-asFf/preview",
+    repo: "",
   },
   // Note: Proyek Video Editing dan Desain Grafis dikosongkan sementara sesuai permintaan
 ];

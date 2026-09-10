@@ -46,8 +46,8 @@ export function ProjectDetail() {
         </div>
 
         <div className="p-6 grid md:grid-cols-3 gap-6">
-          <div className={`md:col-span-2 flex items-center justify-center bg-black/10 rounded-lg p-4 ${project.id === 6 ? "h-[280px] md:h-[220px]" : ""}`}>
-            <img src={project.image} alt={project.title} className={`w-full h-auto object-contain rounded ${project.id === 6 ? "max-h-full" : "max-h-[640px]"}`} />
+          <div className={`md:col-span-2 flex items-center justify-center bg-black/10 rounded-lg p-4 ${project.id === 6 ? "h-[280px] md:h-[220px]" : project.videoEmbed ? "h-[180px] md:h-[220px]" : ""}`}>
+            <img src={project.image} alt={project.title} className={`w-full h-auto object-contain rounded ${project.id === 6 ? "max-h-full" : project.videoEmbed ? "max-h-[160px] md:max-h-[200px]" : "max-h-[640px]"}`} />
           </div>
 
           <div className="md:col-span-1 flex flex-col gap-4">
@@ -62,7 +62,7 @@ export function ProjectDetail() {
             ))}
 
             <div className="flex gap-2 mt-2">
-              {project.live && (
+              {project.live && !project.videoEmbed && (
                 <a href={project.live} target="_blank" rel="noreferrer" className="px-3 py-2 bg-purple-600 rounded-full text-white inline-flex items-center gap-2 text-sm hover:bg-purple-700 transition-colors">
                     {t("demo")} <ExternalLink size={14} />
                   </a>
@@ -101,6 +101,21 @@ export function ProjectDetail() {
                   </video>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {project.videoEmbed && (
+          <div className="p-6 border-t border-zinc-800">
+            <h4 className="text-lg font-[Montserrat] font-bold text-white mb-4">Video Proyek</h4>
+            <div className="w-full aspect-video rounded-lg overflow-hidden bg-black">
+              <iframe
+                src={project.videoEmbed}
+                title={projectTitle}
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                className="w-full h-full border-0"
+              />
             </div>
           </div>
         )}
