@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { projects } from "../data/projectsData";
-import { ExternalLink, Github, Play, X } from "lucide-react";
+import { ExternalLink, Github, X } from "lucide-react";
 import { useLanguage } from "../i18n";
 import { projectTranslations } from "../data/projectTranslations";
 
 export function ProjectDetail() {
   const { language, t } = useLanguage();
   const [project, setProject] = useState<any | null>(null);
-  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     function updateFromHash() {
@@ -16,10 +15,8 @@ export function ProjectDetail() {
         const id = Number(hash.split("project-")[1]);
         const p = projects.find((x) => x.id === id) ?? null;
         setProject(p);
-        setShowVideo(false);
       } else {
         setProject(null);
-        setShowVideo(false);
       }
     }
 
@@ -49,28 +46,14 @@ export function ProjectDetail() {
         </div>
 
         <div className="p-6 grid md:grid-cols-3 gap-6">
-          <div className={`md:col-span-2 flex items-center justify-center bg-black/10 rounded-lg p-4 ${project.id === 6 ? "h-[280px] md:h-[220px]" : project.videoEmbed || project.video ? "h-[180px] md:h-[220px]" : ""}`}>
-            {showVideo && project.video ? (
-              <video controls autoPlay preload="metadata" className="w-full max-h-[640px] rounded object-contain">
+          <div className={`md:col-span-2 flex items-center justify-center bg-black/10 rounded-lg p-4 overflow-hidden ${project.id === 6 ? "h-[280px] md:h-[220px]" : project.videoEmbed || project.video ? "h-[180px] md:h-[220px]" : ""}`}>
+            {project.video ? (
+              <video controls preload="metadata" poster={project.image} className="max-w-full max-h-full rounded object-contain">
                 <source src={project.video} type={project.videoType ?? "video/mp4"} />
                 {t("chatbotVideoUnsupported")}
               </video>
             ) : (
-              <button
-                type="button"
-                onClick={() => project.video && setShowVideo(true)}
-                className={`relative w-full ${project.video ? "cursor-pointer group" : "cursor-default"}`}
-                aria-label={project.video ? "Putar video proyek" : undefined}
-              >
-                <img src={project.image} alt={project.title} className={`w-full h-auto object-contain rounded ${project.id === 6 ? "max-h-full" : project.videoEmbed || project.video ? "max-h-[160px] md:max-h-[200px]" : "max-h-[640px]"}`} />
-                {project.video && (
-                  <span className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="rounded-full bg-purple-600 p-4 text-white shadow-lg">
-                      <Play size={24} fill="currentColor" />
-                    </span>
-                  </span>
-                )}
-              </button>
+              <img src={project.image} alt={project.title} className={`w-full h-auto object-contain rounded ${project.id === 6 ? "max-h-full" : project.videoEmbed || project.video ? "max-h-[160px] md:max-h-[200px]" : "max-h-[640px]"}`} />
             )}
           </div>
 

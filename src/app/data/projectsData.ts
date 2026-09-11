@@ -136,7 +136,7 @@ export const projects = [
   },
   {
     id: 11,
-    title: "Video Rewind Yudisium: Momen Seru Masa Kuliah",
+    title: "Video Rewind Yudisium: Momen Seru & Mengharukan Semasa Kuliah",
     category: "Video Editing / Multimedia",
     image: project11Img,
     description:
