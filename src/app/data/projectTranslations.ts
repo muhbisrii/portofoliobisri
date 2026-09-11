@@ -32,4 +32,9 @@ export const projectTranslations: Record<number, { title: string; category: stri
     category: "Video Editing",
     description: "Alongside my main finance duties, I documented general and departmental activities at the Banjarmasin Office of Women's Empowerment and Child Protection (DP3A), then edited them for publication on the office's official Instagram account.",
   },
+  11: {
+    title: "Graduation Video Rewind: Fun College Memories",
+    category: "Video Editing / Multimedia",
+    description: "A video editing project compiling fun moments throughout college, shown as the closing video at the graduation ceremony. It brings together memories from every class through a unique, dynamic, and entertaining editing style, creating a surprising and unforgettable experience for all graduates.",
+  },
 };

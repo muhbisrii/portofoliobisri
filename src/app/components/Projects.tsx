@@ -57,7 +57,7 @@ export function Projects() {
     return true;
   }).sort((firstProject, secondProject) => {
     if (activeFilter !== "all") return 0;
-    const allTabOrder = [4, 2, 6, 1, 5];
+    const allTabOrder = [11, 7, 6, 5, 4, 2, 1];
     return allTabOrder.indexOf(firstProject.id) - allTabOrder.indexOf(secondProject.id);
   });
 
@@ -155,7 +155,9 @@ export function Projects() {
                       className="group overflow-hidden rounded-2xl bg-zinc-900/30 border border-zinc-800"
                     >
                       <div className="w-full aspect-[4/3] flex items-center justify-center bg-black/10 p-4">
-                        <img src={project.image} alt={projectTitle} className="max-w-full max-h-full object-contain rounded-lg shadow" />
+                        <a href={`#project-${project.id}`} className="w-full h-full flex items-center justify-center" aria-label={`Lihat detail ${projectTitle}`}>
+                          <img src={project.image} alt={projectTitle} className="max-w-full max-h-full object-contain rounded-lg shadow" />
+                        </a>
                       </div>
 
                       <div className="p-6">

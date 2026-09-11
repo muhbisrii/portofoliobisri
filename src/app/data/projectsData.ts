@@ -1,6 +1,7 @@
 import project1Img from "../../assets/project1.png";
 import project2Img from "../../assets/project2.png";
 import project10Img from "../../assets/project10.jpg";
+import project11Img from "../../assets/project11.jpeg";
 import magang1 from "../../assets/magang1.jpg";
 import magang2 from "../../assets/magang2.jpeg";
 import magang3 from "../../assets/magang3.jpg";
@@ -23,6 +24,7 @@ import video4 from "../../assets/video4.mp4";
 import video5 from "../../assets/video5.mp4";
 import video6 from "../../assets/video6.mp4";
 import video7 from "../../assets/video7.mp4";
+import videoKelas from "../../assets/videokelas.mp4";
 import thumbnail1 from "../../assets/thumnail1.png";
 import thumbnail2 from "../../assets/thumnail2.png";
 import thumbnail3 from "../../assets/thumnail3.png";
@@ -132,7 +134,17 @@ export const projects = [
     videoEmbed: "https://drive.google.com/file/d/1hRAU0h7QGcA72aSr3-cl3uBLW1l-asFf/preview",
     repo: "",
   },
-  // Note: Proyek Video Editing dan Desain Grafis dikosongkan sementara sesuai permintaan
+  {
+    id: 11,
+    title: "Video Rewind Yudisium: Momen Seru Masa Kuliah",
+    category: "Video Editing / Multimedia",
+    image: project11Img,
+    description:
+      "Proyek video editing kompilasi momen-momen seru selama masa perkuliahan yang ditayangkan sebagai penutup acara Yudisium. Video ini merangkum kenangan dari setiap kelas dengan gaya editing yang unik, dinamis, dan menghibur. Tujuan utama dari video ini adalah untuk memberikan kejutan, seru-seruan, dan menciptakan memori tak terlupakan bagi seluruh lulusan.",
+    video: videoKelas,
+    videoType: "video/mp4",
+    repo: "",
+  },
 ];
 
 export default projects;
